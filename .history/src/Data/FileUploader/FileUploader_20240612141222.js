@@ -77,7 +77,7 @@ const FileUploader = ({ handlePlay }) => {
                             <img className='cover' alt="cover" src='/song_cover.png' />
                             <span className='name'>{file.name}</span>
                         </div>
-                        <button className='btnPlay' onClick={() => handlePlay(file)}><img className='play' alt='icon' src='/play-button.svg'/></button>
+                        <button onClick={() => handlePlay(file)}><img src=''/></button>
                     </div>
                     <audio className='selectedAudio' src={file.data} key={index} controls />
                 </div>

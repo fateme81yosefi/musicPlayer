@@ -48,6 +48,7 @@
 .play{
     width: 30px;
     height:30px;
+    fill: #1dd3b0;
 }
 .btnPlay{
     background-color: transparent;

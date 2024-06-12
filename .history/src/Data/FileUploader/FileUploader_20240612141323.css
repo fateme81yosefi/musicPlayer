@@ -47,9 +47,5 @@
 }
 .play{
     width: 30px;
-    height:30px;
-}
-.btnPlay{
-    background-color: transparent;
-    border: none;
+    height: 20px;
 }

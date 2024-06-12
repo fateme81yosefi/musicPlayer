@@ -54,14 +54,14 @@ const MainPage = () => {
                     <div className="categories">
                         <h4>categories:</h4>
                         {
-                            categories.map((item, index) => <h6 key={index} className='category'>{item}</h6>)
+                            categories.map((item, index) => <h6 key={index} className=''>{item}</h6>)
                         }
                     </div>
                 </div>
-                <button className='create' onClick={() => setShowModal(true)}>Create PlayList</button>
+                <button onClick={() => setShowModal(true)}>Create PlayList</button>
             </div>
             <div className="rightPage">
-                <input className='inputSearch' placeholder="search..." />
+                <input placeholder="search..." />
                 <FileUploader handlePlay={handlePlay} />
                 <div className="currentlyPlay">
                     <img src="/song_cover.png" alt="کاور آهنگ" />
