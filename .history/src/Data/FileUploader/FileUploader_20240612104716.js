@@ -18,35 +18,32 @@ const FileUploader = () => {
     console.log(audioFiles)
     return (
 
-        
-            audioFiles.length !== 0 ?
 
-
-                (audioFiles.map((file, index) => (
+        {
+            
+        }
+        <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {audioFiles.length !== 0 ? (
+                audioFiles.map((file, index) => (
                     <div className='singleSelectedAudio'>
-                        <div className='row'>
-                            <span>{file.name}</span>
-                            <button>play</button>
-                        </div>
+                     <div className='row'>
+                     <span>{file.name}</span>
+                     <button>play</button>
+                     </div>
                         <audio className='selectedAudio' src={URL.createObjectURL(file)} key={index} controls />
 
                     </div>
                 ))
-                )
-                :
-                (<div {...getRootProps()}>
-                    <input {...getInputProps()} />
-
-                    <div className='chooseFile'>
-                        <img alt='drag file' src='/images.png' />
-                        <p>choose file</p>
-                    </div>
+            ) : (
+                <div className='chooseFile'>
+                    <img alt='drag file' src='/images.png' />
+                    <p>choose file</p>
+                </div>
+            )}
 
 
-                </div >)
-
-        
-
+        </div >
     );
 };
 

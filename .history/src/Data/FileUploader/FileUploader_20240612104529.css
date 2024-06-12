@@ -21,8 +21,3 @@
     background-color:  rgb(211, 211, 211);
     border: 1px solid red;
 }
-.row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}

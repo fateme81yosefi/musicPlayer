@@ -7,12 +7,6 @@ const MainPage = () => {
     const [category, setCategory] = useState('');
     const [categories, setCategories] = useState([]);
 
-    const handleAddCategory = () => {
-        if (category) {
-          setCategories([...categories, category]);
-          setCategory('');
-        }
-      };
     return (
         <div className="container">
             <Modal
@@ -25,7 +19,7 @@ const MainPage = () => {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 />
-                <button onClick={handleAddCategory}>Confirm</button>
+                <button>Confirm</button>
             </Modal>
 
             <div className="leftMenue">

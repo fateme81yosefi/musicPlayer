@@ -1,18 +1,12 @@
 import FileUploader from "../../Data/FileUploader/FileUploader";
 import "./MainPage.css"
 import Modal from 'react-modal';
-import React , {useState} from "react";
+import {useState}from 
 
 const MainPage = () => {
     const [category, setCategory] = useState('');
     const [categories, setCategories] = useState([]);
 
-    const handleAddCategory = () => {
-        if (category) {
-          setCategories([...categories, category]);
-          setCategory('');
-        }
-      };
     return (
         <div className="container">
             <Modal

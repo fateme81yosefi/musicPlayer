@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+import { useDropzone } from 'react-dropzone';
+import "./FileUploader.css"
+
+const FileUploader = () => {
+    const [audioFiles, setAudioFiles] = useState([]);
+
+    const onDrop = (acceptedFiles) => {
+        const mp3Files = acceptedFiles.filter((file) =>
+            file.name.endsWith('.mp3')
+        );
+
+        setAudioFiles(mp3Files);
+    };
+
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
+    console.log(audioFiles)
+    console.log(audioFiles)
+    return (
+
+
+        {audioFiles.length !== 0 ?
+            
+            audioFiles.map((file, index) => (
+                <div className='singleSelectedAudio'>
+                 <div className='row'>
+                 <span>{file.name}</span>
+                 <button>play</button>
+                 </div>
+                    <audio className='selectedAudio' src={URL.createObjectURL(file)} key={index} controls />
+
+                </div>
+            ))
+            :
+
+
+        }
+      
+    );
+};
+
+export default FileUploader;

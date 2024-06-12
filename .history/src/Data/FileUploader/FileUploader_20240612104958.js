@@ -45,7 +45,7 @@ const FileUploader = () => {
 
                 </div >)
 
-        
+        }
 
     );
 };

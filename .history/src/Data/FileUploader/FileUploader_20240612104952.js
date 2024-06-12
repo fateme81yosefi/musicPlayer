@@ -18,7 +18,7 @@ const FileUploader = () => {
     console.log(audioFiles)
     return (
 
-        
+        {
             audioFiles.length !== 0 ?
 
 
@@ -45,7 +45,7 @@ const FileUploader = () => {
 
                 </div >)
 
-        
+        }
 
     );
 };

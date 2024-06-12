@@ -7,12 +7,6 @@ const MainPage = () => {
     const [category, setCategory] = useState('');
     const [categories, setCategories] = useState([]);
 
-    const handleAddCategory = () => {
-        if (category) {
-          setCategories([...categories, category]);
-          setCategory('');
-        }
-      };
     return (
         <div className="container">
             <Modal

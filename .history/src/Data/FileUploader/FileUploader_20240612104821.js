@@ -18,11 +18,11 @@ const FileUploader = () => {
     console.log(audioFiles)
     return (
 
-        
+
+        {
             audioFiles.length !== 0 ?
 
-
-                (audioFiles.map((file, index) => (
+                audioFiles.map((file, index) => (
                     <div className='singleSelectedAudio'>
                         <div className='row'>
                             <span>{file.name}</span>
@@ -32,9 +32,8 @@ const FileUploader = () => {
 
                     </div>
                 ))
-                )
                 :
-                (<div {...getRootProps()}>
+                <div {...getRootProps()}>
                     <input {...getInputProps()} />
 
                     <div className='chooseFile'>
@@ -43,9 +42,9 @@ const FileUploader = () => {
                     </div>
 
 
-                </div >)
+                </div >
 
-        
+        }
 
     );
 };

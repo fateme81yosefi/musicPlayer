@@ -1,22 +1,15 @@
 import FileUploader from "../../Data/FileUploader/FileUploader";
 import "./MainPage.css"
 import Modal from 'react-modal';
-import React , {useState} from "react";
 
 const MainPage = () => {
-    const [category, setCategory] = useState('');
-    const [categories, setCategories] = useState([]);
 
-    const handleAddCategory = () => {
-        if (category) {
-          setCategories([...categories, category]);
-          setCategory('');
-        }
-      };
+
     return (
         <div className="container">
             <Modal
-                isOpen={true}
+                isOpen={/* Set modal open state */}
+                onRequestClose={/* Set function to close modal */}
                 contentLabel="Create Playlist"
             >
                 <h2>Create Playlist</h2>
@@ -27,7 +20,7 @@ const MainPage = () => {
                 />
                 <button onClick={handleAddCategory}>Confirm</button>
             </Modal>
-
+            
             <div className="leftMenue">
                 <div className="top">
                     <div className="imageProfile">
@@ -54,7 +47,7 @@ const MainPage = () => {
                         <hr />
                     </div>
                 </div>
-                <button >Create PlayList</button>
+                <button onClick={() =>}>Create PlayList</button>
             </div>
             <div className="rightPage">
                 <input placeholder="search..." />
