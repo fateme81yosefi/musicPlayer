@@ -1,0 +1,22 @@
+.chooseFile{
+    border: 5px dashed rgb(216, 216, 216);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+}
+.selectedAudio::-webkit-media-controls-panel{
+    background-color: rgb(246, 255, 0);
+    border: none;
+}
+.selectedAudio{
+    border-radius: 0;
+    background-color:  rgb(246, 255, 0);
+    padding: 20px;
+    width: 300px !important;
+}
+.selectedAudio::-webkit-progress-bar{
+    background-color:  rgb(254, 254, 254);
+
+}

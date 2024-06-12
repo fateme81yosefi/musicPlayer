@@ -1,0 +1,15 @@
+.leftMenue{
+    background-color: aquamarine;
+    width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.imageProfile{
+    display: ;
+}
+.imageProfile img{
+    border-radius: 100%;
+}

@@ -1,0 +1,3 @@
+const Data=()=>{
+    const data
+}
