@@ -31,30 +31,14 @@ const storeFile = async (db, file) => {
     await tx.done;
 };
 
-const FileUploader = ({ handlePlay, query }) => {
+const FileUploader = ({ handlePlay },{handleSearch}) => {
     const [audioFiles, setAudioFiles] = useState([]);
 
-    useEffect(() => {
 
-        if (query !== "") {
-            setAudioFiles(audioFiles.filter((item, index) => {
-                if ((item.name).toLowerCase().includes(query.toLowerCase())) { return item; }
-            }))
-        } else {
-            const fetchStoredFiles = async () => {
-                const db = await initDB();
-                const storedFiles = await getStoredFiles(db);
-                setAudioFiles(storedFiles.map(file => ({
-                    ...file,
-                    data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
-                })));
-            };
+    useEffect(()=>{
+        handleSearch(audioFiles)
 
-            fetchStoredFiles();
-        }
-    }, [query])
-
-
+    },[audioFiles])''
     useEffect(() => {
         const fetchStoredFiles = async () => {
             const db = await initDB();
@@ -98,7 +82,7 @@ const FileUploader = ({ handlePlay, query }) => {
                             <img className='cover' alt="cover" src='/song_cover.png' />
                             <span className='name'>{file.name}</span>
                         </div>
-                        <button className='btnPlay' onClick={() => handlePlay(file)}><img className='play' alt='icon' src='/play-button.svg' /></button>
+                        <button className='btnPlay' onClick={() => handlePlay(file)}><img className='play' alt='icon' src='/play-button.svg'/></button>
                     </div>
                     <audio className='selectedAudio' src={file.data} key={index} controls />
                 </div>

@@ -8,8 +8,6 @@ const MainPage = () => {
     const [categories, setCategories] = useState([]);
     const [currentMusic, setCurrentMusic] = useState({});
     const [showModal, setShowModal] = useState(false);
-    const [searchQuery, setSearchQuery] = useState('');
-
 
     useEffect(() => {
         const storedCategories = JSON.parse(localStorage.getItem('categories'));
@@ -30,8 +28,9 @@ const MainPage = () => {
     const handlePlay = (file) => {
         setCurrentMusic(file);
     };
-
-
+    const handleSea = (file) => {
+        setCurrentMusic(file);
+    };
     return (
         <div className="container">
             <Modal
@@ -64,9 +63,8 @@ const MainPage = () => {
                 <button className='create' onClick={() => setShowModal(true)}>Create PlayList</button>
             </div>
             <div className="rightPage">
-                <input className='inputSearch' placeholder="search..." onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <FileUploader handlePlay={handlePlay} query={searchQuery} />
+                <input className='inputSearch' placeholder="search..." />
+                <FileUploader handlePlay={handlePlay} />
                 <div className="currentlyPlay">
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">

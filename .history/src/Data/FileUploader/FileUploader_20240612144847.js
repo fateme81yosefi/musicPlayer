@@ -31,29 +31,21 @@ const storeFile = async (db, file) => {
     await tx.done;
 };
 
-const FileUploader = ({ handlePlay, query }) => {
+const FileUploader = ({ handlePlay ,query }) => {
     const [audioFiles, setAudioFiles] = useState([]);
 
-    useEffect(() => {
 
-        if (query !== "") {
-            setAudioFiles(audioFiles.filter((item, index) => {
-                if ((item.name).toLowerCase().includes(query.toLowerCase())) { return item; }
-            }))
-        } else {
-            const fetchStoredFiles = async () => {
-                const db = await initDB();
-                const storedFiles = await getStoredFiles(db);
-                setAudioFiles(storedFiles.map(file => ({
-                    ...file,
-                    data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
-                })));
-            };
+    if(query!==""){
+        setAudioFiles(audioFiles.filter((item,index)=>{
 
-            fetchStoredFiles();
-        }
-    }, [query])
+        }))
 
+
+        const filterBySearch = productList.filter((item) => {
+           
+        })
+        setProducts(filterBySearch);
+    }
 
     useEffect(() => {
         const fetchStoredFiles = async () => {

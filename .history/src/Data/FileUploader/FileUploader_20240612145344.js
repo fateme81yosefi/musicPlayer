@@ -35,22 +35,11 @@ const FileUploader = ({ handlePlay, query }) => {
     const [audioFiles, setAudioFiles] = useState([]);
 
     useEffect(() => {
-
+        
         if (query !== "") {
             setAudioFiles(audioFiles.filter((item, index) => {
                 if ((item.name).toLowerCase().includes(query.toLowerCase())) { return item; }
             }))
-        } else {
-            const fetchStoredFiles = async () => {
-                const db = await initDB();
-                const storedFiles = await getStoredFiles(db);
-                setAudioFiles(storedFiles.map(file => ({
-                    ...file,
-                    data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
-                })));
-            };
-
-            fetchStoredFiles();
         }
     }, [query])
 

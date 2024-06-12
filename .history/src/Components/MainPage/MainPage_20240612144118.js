@@ -64,7 +64,7 @@ const MainPage = () => {
                 <button className='create' onClick={() => setShowModal(true)}>Create PlayList</button>
             </div>
             <div className="rightPage">
-                <input className='inputSearch' placeholder="search..." onChange={(e) => setSearchQuery(e.target.value)}
+                <input className='inputSearch' placeholder="search..." onChange={(e) => searchQuery(e.target.value)}
                 />
                 <FileUploader handlePlay={handlePlay} query={searchQuery} />
                 <div className="currentlyPlay">
