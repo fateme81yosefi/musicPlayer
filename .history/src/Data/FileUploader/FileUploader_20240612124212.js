@@ -6,6 +6,7 @@ const FileUploader = () => {
     const [audioFiles, setAudioFiles] = useState([]);
 
     useEffect(() => {
+        // Retrieve audio files from localStorage
         const storedFiles = JSON.parse(localStorage.getItem('audioFiles')) || [];
         setAudioFiles(storedFiles.map(file => new File([file.data], file.name, { type: file.type })));
     }, []);

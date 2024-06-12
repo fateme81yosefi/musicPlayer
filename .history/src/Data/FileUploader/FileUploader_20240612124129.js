@@ -6,6 +6,7 @@ const FileUploader = () => {
     const [audioFiles, setAudioFiles] = useState([]);
 
     useEffect(() => {
+        // Retrieve audio files from localStorage
         const storedFiles = JSON.parse(localStorage.getItem('audioFiles')) || [];
         setAudioFiles(storedFiles.map(file => new File([file.data], file.name, { type: file.type })));
     }, []);
@@ -15,6 +16,7 @@ const FileUploader = () => {
             file.name.endsWith('.mp3')
         );
 
+        // Convert files to JSON-compatible objects
         const filesToStore = mp3Files.map(file => ({
             name: file.name,
             type: file.type,
@@ -24,6 +26,7 @@ const FileUploader = () => {
         const updatedFiles = [...audioFiles, ...filesToStore];
         setAudioFiles(updatedFiles);
 
+        // Save files to localStorage
         localStorage.setItem('audioFiles', JSON.stringify(updatedFiles));
     };
 

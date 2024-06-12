@@ -5,50 +5,56 @@ import "./FileUploader.css"
 const FileUploader = () => {
     const [audioFiles, setAudioFiles] = useState([]);
 
-    useEffect(() => {
-        const storedFiles = JSON.parse(localStorage.getItem('audioFiles')) || [];
-        setAudioFiles(storedFiles.map(file => new File([file.data], file.name, { type: file.type })));
-    }, []);
-
     const onDrop = (acceptedFiles) => {
         const mp3Files = acceptedFiles.filter((file) =>
             file.name.endsWith('.mp3')
         );
 
-        const filesToStore = mp3Files.map(file => ({
-            name: file.name,
-            type: file.type,
-            data: URL.createObjectURL(file)
-        }));
-
-        const updatedFiles = [...audioFiles, ...filesToStore];
-        setAudioFiles(updatedFiles);
-
-        localStorage.setItem('audioFiles', JSON.stringify(updatedFiles));
+        setAudioFiles(mp3Files);
     };
 
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
+
+    
+    useEffect(() => {
+        console.log(URL.createObjectURL(audioFiles))
+
+    }, [audioFiles]);
+
+
+
     return (
-        audioFiles.length !== 0 ? (
-            audioFiles.map((file, index) => (
+
+
+        audioFiles.length !== 0 ?
+
+
+            (audioFiles.map((file, index) => (
                 <div className='singleSelectedAudio' key={index}>
                     <div className='row'>
                         <span>{file.name}</span>
                         <button>play</button>
                     </div>
-                    <audio className='selectedAudio' src={file.data} key={index} controls />
+                    <audio className='selectedAudio' src={URL.createObjectURL(file)} key={index} controls />
+
                 </div>
             ))
-        ) : (
-            <div {...getRootProps()}>
+            )
+            :
+            (<div {...getRootProps()}>
                 <input {...getInputProps()} />
+
                 <div className='chooseFile'>
                     <img alt='drag file' src='/images.png' />
                     <p>choose file</p>
                 </div>
-            </div>
-        )
+
+
+            </div >)
+
+
+
     );
 };
 
