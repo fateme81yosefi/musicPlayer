@@ -31,7 +31,7 @@ const storeFile = async (db, file) => {
     await tx.done;
 };
 
-const FileUploader = ({ handlePlay }) => {
+const FileUploader = ({ handlePlay, categories }) => {
     const [audioFiles, setAudioFiles] = useState([]);
 
     useEffect(() => {
@@ -56,8 +56,20 @@ const FileUploader = ({ handlePlay }) => {
 
         for (const file of mp3Files) {
             const fileData = await file.arrayBuffer();
-            await storeFile(db, { name: file.name, type: file.type, data: fileData });
+            await storeFile(db, { name: file.name, type: file.type, data: fileData, categories: [] });
         }
+
+        const storedFiles = await getStoredFiles(db);
+        setAudioFiles(storedFiles.map(file => ({
+            ...file,
+            data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
+        })));
+    };
+
+    const handleCategoryChange = async (file, selectedCategories) => {
+        const db = await initDB();
+        const updatedFile = { ...file, categories: selectedCategories };
+        await storeFile(db, updatedFile);
 
         const storedFiles = await getStoredFiles(db);
         setAudioFiles(storedFiles.map(file => ({
@@ -69,20 +81,29 @@ const FileUploader = ({ handlePlay }) => {
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     return (
-        <div>
-            {audioFiles.map((file, index) => (
+        audioFiles.length !== 0 ? (
+            audioFiles.map((file, index) => (
                 <div className='singleSelectedAudio' key={index}>
                     <div className='row'>
-                        <div className=''>
-                            <img className='cover' alt="cover" src='/song_cover.png' />
-                            <span>{file.name}</span>
-                        </div>
+                        <span>{file.name}</span>
                         <button onClick={() => handlePlay(file)}>play</button>
                     </div>
                     <audio className='selectedAudio' src={file.data} key={index} controls />
+                    <select
+                        multiple
+                        value={file.categories}
+                        onChange={(e) => {
+                            const selectedCategories = Array.from(e.target.selectedOptions, option => option.value);
+                            handleCategoryChange(file, selectedCategories);
+                        }}
+                    >
+                        {categories.map((category, idx) => (
+                            <option key={idx} value={category}>{category}</option>
+                        ))}
+                    </select>
                 </div>
-            ))}
-
+            ))
+        ) : (
             <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 <div className='chooseFile'>
@@ -90,7 +111,7 @@ const FileUploader = ({ handlePlay }) => {
                     <p>choose file</p>
                 </div>
             </div>
-        </div>
+        )
     );
 };
 

@@ -14,7 +14,11 @@ const MainPage = () => {
         if (storedCategories) {
             setCategories(storedCategories);
         }
+
+        console.log(currentMusic)
     }, []);
+
+    
 
     const handleAddCategory = () => {
         if (category) {
@@ -67,7 +71,7 @@ const MainPage = () => {
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">
                         <span className="musicName">{currentMusic.name}</span>
-                        <audio id="player" src={currentMusic.data} controls ></audio>
+                        <audio id="player" src={currentMusic.path} controls ></audio>
                     </div>
                 </div>
                 <div>

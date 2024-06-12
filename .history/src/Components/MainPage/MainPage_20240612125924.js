@@ -14,8 +14,20 @@ const MainPage = () => {
         if (storedCategories) {
             setCategories(storedCategories);
         }
+
+        console.log(currentMusic)
     }, []);
 
+
+
+    useEffect(() => {
+        const storedCategories = JSON.parse(localStorage.getItem('categories'));
+        if (storedCategories) {
+            setCategories(storedCategories);
+        }
+
+        console.log(currentMusic)
+    }, [currentMusic]);
     const handleAddCategory = () => {
         if (category) {
             const updatedCategories = [...categories, category];
@@ -67,7 +79,7 @@ const MainPage = () => {
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">
                         <span className="musicName">{currentMusic.name}</span>
-                        <audio id="player" src={currentMusic.data} controls ></audio>
+                        <audio id="player" src={currentMusic.path} controls ></audio>
                     </div>
                 </div>
                 <div>

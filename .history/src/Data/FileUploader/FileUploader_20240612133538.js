@@ -69,8 +69,8 @@ const FileUploader = ({ handlePlay }) => {
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     return (
-        <div>
-            {audioFiles.map((file, index) => (
+        audioFiles.length !== 0 ? (
+                audioFiles.map((file, index) => (
                 <div className='singleSelectedAudio' key={index}>
                     <div className='row'>
                         <div className=''>
@@ -81,8 +81,15 @@ const FileUploader = ({ handlePlay }) => {
                     </div>
                     <audio className='selectedAudio' src={file.data} key={index} controls />
                 </div>
-            ))}
-
+                ));
+                <div {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    <div className='chooseFile'>
+                        <img alt='drag file' src='/images.png' />
+                        <p>choose file</p>
+                    </div>
+                </div>
+        ) : (
             <div {...getRootProps()}>
                 <input {...getInputProps()} />
                 <div className='chooseFile'>
@@ -90,7 +97,7 @@ const FileUploader = ({ handlePlay }) => {
                     <p>choose file</p>
                 </div>
             </div>
-        </div>
+        )
     );
 };
 

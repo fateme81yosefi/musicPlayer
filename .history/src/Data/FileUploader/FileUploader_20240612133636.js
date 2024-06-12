@@ -70,18 +70,18 @@ const FileUploader = ({ handlePlay }) => {
 
     return (
         <div>
-            {audioFiles.map((file, index) => (
-                <div className='singleSelectedAudio' key={index}>
-                    <div className='row'>
-                        <div className=''>
-                            <img className='cover' alt="cover" src='/song_cover.png' />
-                            <span>{file.name}</span>
-                        </div>
-                        <button onClick={() => handlePlay(file)}>play</button>
+            audioFiles.map((file, index) => (
+            <div className='singleSelectedAudio' key={index}>
+                <div className='row'>
+                    <div className=''>
+                        <img className='cover' alt="cover" src='/song_cover.png' />
+                        <span>{file.name}</span>
                     </div>
-                    <audio className='selectedAudio' src={file.data} key={index} controls />
+                    <button onClick={() => handlePlay(file)}>play</button>
                 </div>
-            ))}
+                <audio className='selectedAudio' src={file.data} key={index} controls />
+            </div>
+            ))
 
             <div {...getRootProps()}>
                 <input {...getInputProps()} />

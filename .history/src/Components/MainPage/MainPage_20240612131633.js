@@ -26,7 +26,10 @@ const MainPage = () => {
     };
 
     const handlePlay = (file) => {
-        setCurrentMusic(file);
+        setCurrentMusic({
+            name: file.name,
+            path: file.data
+        });
     };
 
     return (
@@ -52,7 +55,7 @@ const MainPage = () => {
                         <div className="name">Fateme</div>
                     </div>
                     <div className="categories">
-                        <h4>categories:</h4>
+                        <h4>Categories:</h4>
                         {
                             categories.map((item, index) => <h6 key={index}>{item}</h6>)
                         }
@@ -61,20 +64,18 @@ const MainPage = () => {
                 <button onClick={() => setShowModal(true)}>Create PlayList</button>
             </div>
             <div className="rightPage">
-                <input placeholder="search..." />
+                <input placeholder="Search..." />
                 <FileUploader handlePlay={handlePlay} />
                 <div className="currentlyPlay">
-                    <img src="/song_cover.png" alt="کاور آهنگ" />
+                    <img src="/song_cover.png" alt="Cover" />
                     <div className="containName">
                         <span className="musicName">{currentMusic.name}</span>
-                        <audio id="player" src={currentMusic.data} controls ></audio>
+                        <audio id="player" src={currentMusic.path} controls autoPlay></audio>
                     </div>
-                </div>
-                <div>
                 </div>
             </div>
         </div>
-    )
+    );
 };
 
 export default MainPage;

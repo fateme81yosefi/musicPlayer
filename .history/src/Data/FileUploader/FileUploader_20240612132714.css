@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: space-around;
     margin: 10px;
-    margin-bottom: 100px;
 }
 .selectedAudio::-webkit-media-controls-panel{
     background-color: rgb(211, 211, 211);
@@ -28,7 +27,6 @@
     justify-content: space-between;
 }
 
-.cover{
-   width: 40px;
-   height: 40px;
+.,cover{
+    
 }

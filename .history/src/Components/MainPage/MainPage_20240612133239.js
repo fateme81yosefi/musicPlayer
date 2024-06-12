@@ -62,7 +62,7 @@ const MainPage = () => {
             </div>
             <div className="rightPage">
                 <input placeholder="search..." />
-                <FileUploader handlePlay={handlePlay} />
+                <FileUploader handlePlay={handlePlay} categories={categories} />
                 <div className="currentlyPlay">
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">

@@ -14,7 +14,14 @@ const MainPage = () => {
         if (storedCategories) {
             setCategories(storedCategories);
         }
+
     }, []);
+
+
+    useEffect(() => {
+
+        console.log(currentMusic)
+    }, [currentMusic]);
 
     const handleAddCategory = () => {
         if (category) {

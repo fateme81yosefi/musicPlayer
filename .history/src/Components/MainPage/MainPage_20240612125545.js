@@ -67,7 +67,7 @@ const MainPage = () => {
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">
                         <span className="musicName">{currentMusic.name}</span>
-                        <audio id="player" src={currentMusic.data} controls ></audio>
+                        <audio id="player" src={currentMusic.pa} controls ></audio>
                     </div>
                 </div>
                 <div>
