@@ -1,7 +1,7 @@
 import FileUploader from "../../Data/FileUploader/FileUploader";
 import "./MainPage.css"
 import Modal from 'react-modal';
-import React , {useState,useEffect} from "react";
+import React , {useState} from "react";
 
 const MainPage = () => {
     const [category, setCategory] = useState('');
@@ -10,12 +10,13 @@ const MainPage = () => {
 
 
     useEffect(() => {
+        // در زمان بارگیری کامپوننت، دسته‌بندی‌ها را از localStorage بخوانید
         const storedCategories = JSON.parse(localStorage.getItem('categories'));
         if (storedCategories) {
           setCategories(storedCategories);
         }
       }, []);
-
+      
     const handleAddCategory = () => {
         if (category) {
           const updatedCategories = [...categories, category];

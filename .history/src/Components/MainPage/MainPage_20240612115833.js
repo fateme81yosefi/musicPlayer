@@ -10,6 +10,7 @@ const MainPage = () => {
 
 
     useEffect(() => {
+        // در زمان بارگیری کامپوننت، دسته‌بندی‌ها را از localStorage بخوانید
         const storedCategories = JSON.parse(localStorage.getItem('categories'));
         if (storedCategories) {
           setCategories(storedCategories);

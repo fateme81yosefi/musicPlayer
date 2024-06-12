@@ -1,28 +1,18 @@
 import FileUploader from "../../Data/FileUploader/FileUploader";
 import "./MainPage.css"
 import Modal from 'react-modal';
-import React , {useState,useEffect} from "react";
+import React , {useState} from "react";
 
 const MainPage = () => {
     const [category, setCategory] = useState('');
     const [categories, setCategories] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
-
-    useEffect(() => {
-        const storedCategories = JSON.parse(localStorage.getItem('categories'));
-        if (storedCategories) {
-          setCategories(storedCategories);
-        }
-      }, []);
-
     const handleAddCategory = () => {
         if (category) {
-          const updatedCategories = [...categories, category];
-          setCategories(updatedCategories);
+          setCategories([...categories, category]);
           setCategory('');
-    
-          localStorage.setItem('categories', JSON.stringify(updatedCategories));
+          console.log(ca)
         }
       };
     return (
@@ -50,9 +40,12 @@ const MainPage = () => {
                     </div>
                     <div className="categories">
                         <h4>categories:</h4>
-                     {
-                        categories.map((item, index)=><h6 key={index}>{item}</h6>)
-                     }
+                        <span>pop</span>
+                        <hr />
+                        <span>Rock</span>
+                        <hr />
+                        <span>fav</span>
+                        <hr />
                     </div>
                     <div className="artist">
                         <h4>Artist:</h4>
