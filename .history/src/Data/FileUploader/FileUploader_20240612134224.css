@@ -19,8 +19,8 @@
     display: none;
 }
 .singleSelectedAudio{
-    background-color:  rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(238, 238, 238);
+    background-color:  rgb(211, 211, 211);
+    border: 1px solid red;
 }
 .row{
     display: flex;
@@ -33,12 +33,5 @@
    height: 40px;
 }
 .containDetails{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.containSingle{
-    padding: 10px;
+    display: ;
 }

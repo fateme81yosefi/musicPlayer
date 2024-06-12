@@ -17,14 +17,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid white;
-    padding: 10px;
+    border-bottom: 1px s;
     justify-content: space-between;
 }
 .imageProfile img{
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
 }
 .rightPage{
     width: 100%;

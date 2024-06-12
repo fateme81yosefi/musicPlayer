@@ -69,11 +69,11 @@ const FileUploader = ({ handlePlay }) => {
     const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     return (
-        <div className='containSingle'>
+        <div>
             {audioFiles.map((file, index) => (
                 <div className='singleSelectedAudio' key={index}>
                     <div className='row'>
-                        <div className='containDetails'>
+                        <div className='contain'>
                             <img className='cover' alt="cover" src='/song_cover.png' />
                             <span>{file.name}</span>
                         </div>

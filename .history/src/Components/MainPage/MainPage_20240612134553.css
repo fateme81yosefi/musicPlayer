@@ -1,36 +1,32 @@
 .container{
     display: flex;
     flex-direction: row;
-    background-color: #ffffff;
+    background-color: #231c35;
 }
 .leftMenue{
-    background-color:#1dd3b0;
+    background-color:#6e5774;
     width: 20%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px;
     
 }
 .imageProfile{
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-bottom: 1px solid white;
-    padding: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .imageProfile img{
     border-radius: 100%;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
 }
 .rightPage{
     width: 100%;
     height: 100vh;
     position: relative;
-    padding:0 20px;
 }
 .rightPage input{
     width: 100%;
@@ -41,7 +37,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #f1faee;
+    background-color: #2a2b47;
     height: 100px;
     bottom: 0;
     position: fixed;
@@ -67,7 +63,7 @@ audio{
 }
 
 audio::-webkit-media-controls-panel{
-    background-color: #f1faee;
+    background-color: rgb(137, 127, 209);
     border: none;
 }
 .rightPage{
