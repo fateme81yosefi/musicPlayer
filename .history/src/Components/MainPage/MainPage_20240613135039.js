@@ -9,7 +9,6 @@ const MainPage = () => {
     const [currentMusic, setCurrentMusic] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-    const [selectedCategory, setSelectedCategory] = useState('');
 
 
     useEffect(() => {
@@ -58,7 +57,7 @@ const MainPage = () => {
                     <div className="categories">
                         <h4>categories:</h4>
                         {
-                            categories.map((item, index) => <h6 key={index} className='category' onClick={()=>{setSelectedCategory(item)}}>{item}</h6>)
+                            categories.map((item, index) => <h6 key={index} className='category'>{item}</h6>)
                         }
                     </div>
                 </div>
@@ -67,7 +66,7 @@ const MainPage = () => {
             <div className="rightPage">
                 <input className='inputSearch' placeholder="search..." onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <FileUploader handlePlay={handlePlay} query={searchQuery} selectedCategory={selectedCategory} />
+                <FileUploader handlePlay={handlePlay} query={searchQuery} selectedCategory />
                 <div className="currentlyPlay">
                     <img src="/song_cover.png" alt="کاور آهنگ" />
                     <div className="containName">

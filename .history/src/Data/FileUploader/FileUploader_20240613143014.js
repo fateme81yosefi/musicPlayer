@@ -129,32 +129,32 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
 
             <button onClick={deleteAllFiles}>Delete All Files</button>
             {audioFiles
-                .filter(file => currentCategory === "" || file.category === currentCategory)
-                .map((file, index) => (
-                    <div className='singleSelectedAudio' key={index}>
-                        <div className='row'>
-                            <div className='containDetails'>
-                                <img className='cover' alt="cover" src='/song_cover.png' />
-                                <span className='name'>{file.name}</span>
-                            </div>
-                            <div>
-                                <select
-                                    value={file.category}
-                                    onChange={(e) => handleCategoryChange(file, e.target.value)}
-                                >
-                                    <option value="">Select Category</option>
-                                    {categories.map((category, index) => (
-                                        <option key={index} value={category}>{category}</option>
-                                    ))}
-                                </select>
-                                <button className='btnPlay' onClick={() => handlePlay(file)}>
-                                    <img className='play' alt='icon' src='/play-button.svg' />
-                                </button>
-                            </div>
-                        </div>
-                        <audio className='selectedAudio' src={file.data} key={index} controls />
-                    </div>
-                ))}
+  .filter(file => currentCategory === "" || file.category === currentCategory)
+  .map((file, index) => (
+    <div className='singleSelectedAudio' key={index}>
+      <div className='row'>
+        <div className='containDetails'>
+          <img className='cover' alt="cover" src='/song_cover.png' />
+          <span className='name'>{file.name}</span>
+        </div>
+        <div>
+          <select
+            value={file.category}
+            onChange={(e) => handleCategoryChange(file, e.target.value)}
+          >
+            <option value="">Select Category</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>{category}</option>
+            ))}
+          </select>
+          <button className='btnPlay' onClick={() => handlePlay(file)}>
+            <img className='play' alt='icon' src='/play-button.svg' />
+          </button>
+        </div>
+      </div>
+      <audio className='selectedAudio' src={file.data} key={index} controls />
+    </div>
+  ))}
 
 
             <div {...getRootProps()}>

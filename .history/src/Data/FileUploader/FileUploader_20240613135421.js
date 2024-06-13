@@ -37,7 +37,6 @@ const storeFile = async (db, file) => {
 const FileUploader = ({ handlePlay, query, selectedCategory }) => {
     const [audioFiles, setAudioFiles] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [currentCategory, setCurrentCategory] = useState('');
 
 
     const deleteAllFiles = async () => {
@@ -54,13 +53,11 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
         if (storedCategories) {
             setCategories(storedCategories);
         }
+
     }, []);
 
 
-    useEffect(() => {
-        setCurrentCategory(selectedCategory)
-    }, [selectedCategory])
-
+    
 
     useEffect(() => {
         if (query !== "") {
@@ -128,34 +125,37 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
         <div className='containSingle'>
 
             <button onClick={deleteAllFiles}>Delete All Files</button>
-            {audioFiles
-                .filter(file => currentCategory === "" || file.category === currentCategory)
-                .map((file, index) => (
-                    <div className='singleSelectedAudio' key={index}>
-                        <div className='row'>
-                            <div className='containDetails'>
-                                <img className='cover' alt="cover" src='/song_cover.png' />
-                                <span className='name'>{file.name}</span>
-                            </div>
-                            <div>
-                                <select
-                                    value={file.category}
-                                    onChange={(e) => handleCategoryChange(file, e.target.value)}
-                                >
-                                    <option value="">Select Category</option>
-                                    {categories.map((category, index) => (
-                                        <option key={index} value={category}>{category}</option>
-                                    ))}
-                                </select>
-                                <button className='btnPlay' onClick={() => handlePlay(file)}>
-                                    <img className='play' alt='icon' src='/play-button.svg' />
-                                </button>
-                            </div>
+            {audioFiles.map((file, index) => (
+                <div className='singleSelectedAudio' key={index}>
+                    <div className='row'>
+                        <div className='containDetails'>
+                            <img className='cover' alt="cover" src='/song_cover.png' />
+                            <span className='name'>{file.name}</span>
                         </div>
-                        <audio className='selectedAudio' src={file.data} key={index} controls />
-                    </div>
-                ))}
+                        <div>
+                            <select
+                                value={file.category}
+                                onChange={(e) => handleCategoryChange(file, e.target.value)}
+                            >
+                                <option value="">Select Category</option>
+                                {categories.map((category, index) => (
+                                    <option key={index} value={category}>{category}</option>
+                                ))}
+                            </select>
+                            <button className='btnPlay' onClick={() => handlePlay(file)}>
 
+                                <img className='play' alt='icon' src='/play-button.svg' />
+                            </button>
+                        </div>
+                    </div>
+                    {selectedCategory == "" ?
+                        <audio className='selectedAudio' src={file.data} key={index} controls />
+                        :
+                        (file.category == selectedCategory ? <audio className='selectedAudio' src={file.data} key={index} controls /> : ""
+                        )
+                    }
+                </div>
+            ))}
 
             <div {...getRootProps()}>
                 <input {...getInputProps()} />

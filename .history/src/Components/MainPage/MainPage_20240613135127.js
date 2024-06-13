@@ -58,7 +58,7 @@ const MainPage = () => {
                     <div className="categories">
                         <h4>categories:</h4>
                         {
-                            categories.map((item, index) => <h6 key={index} className='category' onClick={()=>{setSelectedCategory(item)}}>{item}</h6>)
+                            categories.map((item, index) => <h6 key={index} className='category' onClick={()=>{setSelectedCategory(se)}}>{item}</h6>)
                         }
                     </div>
                 </div>
