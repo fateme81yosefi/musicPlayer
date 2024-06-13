@@ -25,7 +25,7 @@ const MainPage = () => {
             setCategories(updatedCategories);
             setCategory('');
             localStorage.setItem('categories', JSON.stringify(updatedCategories));
-            setShowModal(false)
+            set
         }
     };
 
