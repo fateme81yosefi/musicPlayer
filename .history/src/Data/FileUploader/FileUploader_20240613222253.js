@@ -129,7 +129,7 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
 
             <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
             {audioFiles
-                .filter(file => currentCategory === "All" || file.category === currentCategory)
+                .filter(file => currentCategory === "" || file.category === currentCategory)
                 .map((file, index) => (
                     <div className='singleSelectedAudio' key={index}>
                         <div className='row'>

@@ -90,15 +90,7 @@ audio::-webkit-media-controls-panel {
 .modalCategory input{
   padding: 10px ;
   margin-bottom: 10px;
-  width: 80%;
-}
-.modalCategory button{
-  background-color: #1dd3b0;
-  margin-bottom: 10px;
-  padding: 15px 10px;
-  border-radius: 5px;
-  border: none;
-  color: #ffff;
+  wi
 }
 
 .category {

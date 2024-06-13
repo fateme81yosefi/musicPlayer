@@ -59,9 +59,8 @@ const MainPage = () => {
                     </div>
                     <div className="categories">
                         <h3>PlayLists:</h3>
-                        <h4 className='category' onClick={() => { setSelectedCategory('All') }}>All</h4>
                         {
-                            categories.map((item, index) => <h4 key={index} className='category' onClick={() => { setSelectedCategory(item) }}>{item}</h4>)
+                            categories.map((item, index) => <h4 key={index} className='category' onClick={()=>{setSelectedCategory(item)}}>{item}</h4>)
                         }
                     </div>
                 </div>

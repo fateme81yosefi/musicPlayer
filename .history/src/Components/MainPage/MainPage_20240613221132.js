@@ -45,7 +45,6 @@ const MainPage = () => {
                 <input
                     type="text"
                     value={category}
-                    placeholder='Enter Your Playlist Name'
                     onChange={(e) => setCategory(e.target.value)}
                 />
                 <button onClick={handleAddCategory}>Confirm</button>
@@ -58,10 +57,9 @@ const MainPage = () => {
                         <div className="name">Fateme</div>
                     </div>
                     <div className="categories">
-                        <h3>PlayLists:</h3>
-                        <h4 className='category' onClick={() => { setSelectedCategory('All') }}>All</h4>
+                        <h4>PlayLists:</h4>
                         {
-                            categories.map((item, index) => <h4 key={index} className='category' onClick={() => { setSelectedCategory(item) }}>{item}</h4>)
+                            categories.map((item, index) => <h4 key={index} className='category' onClick={()=>{setSelectedCategory(item)}}>{item}</h4>)
                         }
                     </div>
                 </div>

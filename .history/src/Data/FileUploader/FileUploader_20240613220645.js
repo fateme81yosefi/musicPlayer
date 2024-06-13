@@ -37,7 +37,7 @@ const storeFile = async (db, file) => {
 const FileUploader = ({ handlePlay, query, selectedCategory }) => {
     const [audioFiles, setAudioFiles] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [currentCategory, setCurrentCategory] = useState('All');
+    const [currentCategory, setCurrentCategory] = useState('');
 
 
     const deleteAllFiles = async () => {
@@ -127,9 +127,9 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
     return (
         <div className='containSingle'>
 
-            <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
+            <button className='deleteAll' onClick={deleteAllFiles}>Delete All M</button>
             {audioFiles
-                .filter(file => currentCategory === "All" || file.category === currentCategory)
+                .filter(file => currentCategory === "" || file.category === currentCategory)
                 .map((file, index) => (
                     <div className='singleSelectedAudio' key={index}>
                         <div className='row'>
@@ -137,7 +137,7 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
                                 <img className='cover' alt="cover" src='/song_cover.png' />
                                 <span className='name'>{file.name}</span>
                             </div>
-                            <div className='row'>
+                            <div>
                                 <select
                                     value={file.category}
                                     onChange={(e) => handleCategoryChange(file, e.target.value)}
@@ -161,7 +161,7 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
                 <input {...getInputProps()} />
                 <div className='chooseFile'>
                     <img alt='drag file' src='/images.png' />
-                    <p> Choose Your Musices...</p>
+                    <p>choose file</p>
                 </div>
             </div>
         </div>

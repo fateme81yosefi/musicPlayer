@@ -100,7 +100,9 @@ audio::-webkit-media-controls-panel {
   border: none;
   color: #ffff;
 }
-
+.name{
+  colo
+}
 .category {
   border-bottom: 1px solid rgba(255, 255, 255, 0.375);
   padding: 10px;

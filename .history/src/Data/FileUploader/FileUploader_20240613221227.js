@@ -37,7 +37,7 @@ const storeFile = async (db, file) => {
 const FileUploader = ({ handlePlay, query, selectedCategory }) => {
     const [audioFiles, setAudioFiles] = useState([]);
     const [categories, setCategories] = useState([]);
-    const [currentCategory, setCurrentCategory] = useState('All');
+    const [currentCategory, setCurrentCategory] = useState('');
 
 
     const deleteAllFiles = async () => {
@@ -129,7 +129,7 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
 
             <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
             {audioFiles
-                .filter(file => currentCategory === "All" || file.category === currentCategory)
+                .filter(file => currentCategory === "" || file.category === currentCategory)
                 .map((file, index) => (
                     <div className='singleSelectedAudio' key={index}>
                         <div className='row'>
@@ -161,7 +161,7 @@ const FileUploader = ({ handlePlay, query, selectedCategory }) => {
                 <input {...getInputProps()} />
                 <div className='chooseFile'>
                     <img alt='drag file' src='/images.png' />
-                    <p> Choose Your Musices...</p>
+                    <p> </p>
                 </div>
             </div>
         </div>
