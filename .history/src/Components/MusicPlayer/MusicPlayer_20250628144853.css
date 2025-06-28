@@ -1,0 +1,35 @@
+.controls {
+  margin-top: 15px;
+}
+
+.controls label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.controls input[type="range"] {
+  width: 100%;
+}
+
+.speed-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.speed-buttons button {
+  background: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #5409DA;
+  font-weight: bold;
+}
+
+.speed-buttons button.active {
+  background: #5409DA;
+  color: white;
+}
