@@ -68,7 +68,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         data,
         category: selectedCategory || '',
         cover: null,    
-        coverUrl: null,
+        coverUrl: null, // این فیلد الان نیاز نیست استفاده بشه
       };
     }));
 

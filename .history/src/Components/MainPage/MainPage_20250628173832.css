@@ -173,12 +173,3 @@ h4 {
   align-items: center;
   justify-content: center;
 }
-.modalUploader {
-  background: white;
-  padding: 2rem;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 1rem;
-  z-index: 1000;
-  position: relative;
-}

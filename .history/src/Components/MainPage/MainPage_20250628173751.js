@@ -16,7 +16,7 @@ const MainPage = () => {
     const [currentMusic, setCurrentMusic] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(''); // ✅ این خط اضافه شد
     const [showUploaderModal, setShowUploaderModal] = useState(false);
     const [audioFiles, setAudioFiles] = useState([]);
 
@@ -61,8 +61,6 @@ const MainPage = () => {
         await tx.done;
         setAudioFiles([]);
     };
-
-
     return (
         <div className="container">
             <Modal
@@ -101,11 +99,11 @@ const MainPage = () => {
 
             <div className="rightPage">
 
-                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <button className="uploadBtn" onClick={() => setShowUploaderModal(true)}>
                     Upload New Music
                 </button>
+                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <Modal
                     isOpen={showUploaderModal}
@@ -119,6 +117,7 @@ const MainPage = () => {
                         onClose={() => setShowUploaderModal(false)}
                     />
 
+                    <button onClick={() => setShowUploaderModal(false)}>Close</button>
                 </Modal>
                 <div className='row'>
 

@@ -22,6 +22,7 @@ export default function MusicPlayer({ currentMusic }) {
   }, []);
 
   useEffect(() => {
+    // Reset playback when a new music is loaded
     const audio = audioRef.current;
     if (audio && currentMusic?.data) {
       audio.load();

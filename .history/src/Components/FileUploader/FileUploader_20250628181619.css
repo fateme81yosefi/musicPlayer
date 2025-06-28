@@ -233,6 +233,7 @@ select {
   box-shadow: 0 0 10px #4e71ff;
 }
 
+/* دکمه‌ها در پایین */
 .btnGroup {
   margin-top: 30px;
   display: flex;
@@ -275,6 +276,7 @@ select {
   transform: none;
 }
 
+/* Responsive */
 @media (max-width: 480px) {
   .containSingle {
     padding: 20px 18px;

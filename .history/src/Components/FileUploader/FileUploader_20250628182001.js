@@ -44,19 +44,6 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     }
   }, []);
 
-  useEffect(() => {
-    const fetchStoredFiles = async () => {
-      const db = await initDB();
-      const storedFiles = await getStoredFiles(db);
-      const filesWithURL = storedFiles.map(file => ({
-        ...file,
-        data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
-      }));
-      setAudioFiles(filesWithURL);
-    };
-    fetchStoredFiles();
-  }, [setAudioFiles]);
-
   const onDrop = async (acceptedFiles) => {
     const mp3Files = acceptedFiles.filter(file => file.name.toLowerCase().endsWith('.mp3'));
 
@@ -67,8 +54,8 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         type: file.type,
         data,
         category: selectedCategory || '',
-        cover: null,    
-        coverUrl: null,
+        cover: null,
+        coverUrl: null
       };
     }));
 
@@ -85,11 +72,13 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     const file = e.target.files[0];
     if (!file) return;
 
+    const url = URL.createObjectURL(file);
     const reader = new FileReader();
 
     reader.onload = () => {
       const updatedTempFiles = [...tempFiles];
-      updatedTempFiles[index].cover = reader.result; 
+      updatedTempFiles[index].cover = reader.result;
+      updatedTempFiles[index].coverUrl = url;
       setTempFiles(updatedTempFiles);
     };
 
@@ -98,7 +87,6 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
 
   const handleConfirm = async () => {
     if (tempFiles.length === 0) return;
-
     const db = await initDB();
     for (const file of tempFiles) {
       await storeFile(db, file);
@@ -107,9 +95,8 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     const storedFiles = await getStoredFiles(db);
     const filesWithURL = storedFiles.map(file => ({
       ...file,
-      data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+      data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
     }));
-
     setAudioFiles(filesWithURL);
     setTempFiles([]);
     onClose();
@@ -122,16 +109,13 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         <button className='uploadBtn' onClick={open}>انتخاب فایل MP3</button>
       </div>
 
-    
-
       {tempFiles.length > 0 && (
         <div className='tempFilesList'>
-          <h4>فایل‌های آماده آپلود:</h4>
           {tempFiles.map((file, i) => (
             <div className="tempItem" key={i}>
               <div className="tempDetails">
                 <img
-                  src={file.cover || "/song_cover.png"}
+                  src={file.coverUrl || "/song_cover.png"}
                   alt="cover"
                   className="coverPreview"
                 />

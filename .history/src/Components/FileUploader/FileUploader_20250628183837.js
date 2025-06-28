@@ -51,6 +51,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
       const filesWithURL = storedFiles.map(file => ({
         ...file,
         data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+        // cover به صورت base64 ذخیره شده، مستقیم استفاده می‌شود
       }));
       setAudioFiles(filesWithURL);
     };
@@ -67,8 +68,8 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         type: file.type,
         data,
         category: selectedCategory || '',
-        cover: null,    
-        coverUrl: null,
+        cover: null,    // کاور به صورت base64 ذخیره می‌شود
+        coverUrl: null, // این فیلد الان نیاز نیست استفاده بشه
       };
     }));
 

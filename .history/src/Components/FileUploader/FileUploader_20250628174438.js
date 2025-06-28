@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { openDB } from 'idb';
-import './FileUploader.css';
+import "./FileUploader.css";
 
 const DB_NAME = 'AudioFilesDB';
 const DB_VERSION = 1;
 const STORE_NAME = 'audioFiles';
-
+Modal.setAppElement('#root');
 const initDB = async () => {
   const db = await openDB(DB_NAME, DB_VERSION, {
     upgrade(db) {
@@ -33,7 +33,7 @@ const storeFile = async (db, file) => {
   await tx.done;
 };
 
-const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClose }) => {
+const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory, onClose }) => {
   const [tempFiles, setTempFiles] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -50,7 +50,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
       const storedFiles = await getStoredFiles(db);
       const filesWithURL = storedFiles.map(file => ({
         ...file,
-        data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+        data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
       }));
       setAudioFiles(filesWithURL);
     };
@@ -58,7 +58,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
   }, [setAudioFiles]);
 
   const onDrop = async (acceptedFiles) => {
-    const mp3Files = acceptedFiles.filter(file => file.name.toLowerCase().endsWith('.mp3'));
+    const mp3Files = acceptedFiles.filter(file => file.name.endsWith('.mp3'));
 
     const processedFiles = await Promise.all(mp3Files.map(async (file) => {
       const data = await file.arrayBuffer();
@@ -66,16 +66,16 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         name: file.name,
         type: file.type,
         data,
-        category: selectedCategory || '',
-        cover: null,    
-        coverUrl: null,
+        category: '',
+        cover: null,
+        coverUrl: null
       };
     }));
 
     setTempFiles(prev => [...prev, ...processedFiles]);
   };
 
-  const { getRootProps, getInputProps, open } = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     noClick: true,
     noKeyboard: true,
@@ -85,11 +85,13 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     const file = e.target.files[0];
     if (!file) return;
 
+    const url = URL.createObjectURL(file);
     const reader = new FileReader();
 
     reader.onload = () => {
       const updatedTempFiles = [...tempFiles];
-      updatedTempFiles[index].cover = reader.result; 
+      updatedTempFiles[index].cover = reader.result;
+      updatedTempFiles[index].coverUrl = url;
       setTempFiles(updatedTempFiles);
     };
 
@@ -98,7 +100,6 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
 
   const handleConfirm = async () => {
     if (tempFiles.length === 0) return;
-
     const db = await initDB();
     for (const file of tempFiles) {
       await storeFile(db, file);
@@ -107,22 +108,22 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     const storedFiles = await getStoredFiles(db);
     const filesWithURL = storedFiles.map(file => ({
       ...file,
-      data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+      data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
     }));
-
     setAudioFiles(filesWithURL);
     setTempFiles([]);
-    onClose();
+    onClose(); // بستن مودال
   };
 
   return (
     <div className='containSingle'>
-      <div className='uploadHeader'>
-        <h3>آپلود موسیقی جدید</h3>
-        <button className='uploadBtn' onClick={open}>انتخاب فایل MP3</button>
+      <div className='fullWidth' {...getRootProps()}>
+        <input {...getInputProps()} />
+        <div className='chooseFile'>
+          <img alt='drag file' src='/images.png' />
+          <p>Choose your musics...</p>
+        </div>
       </div>
-
-    
 
       {tempFiles.length > 0 && (
         <div className='tempFilesList'>
@@ -131,29 +132,20 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
             <div className="tempItem" key={i}>
               <div className="tempDetails">
                 <img
-                  src={file.cover || "/song_cover.png"}
+                  src={file.coverUrl || "/song_cover.png"}
                   alt="cover"
                   className="coverPreview"
                 />
                 <div className='info'>
                   <p className="name">{file.name}</p>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleCoverUpload(e, i)}
-                  />
+                  <input type="file" accept="image/*" onChange={(e) => handleCoverUpload(e, i)} />
                 </div>
               </div>
             </div>
           ))}
-          <div className="btnGroup">
-            <button className='confirmBtn' onClick={handleConfirm}>
-              تایید و افزودن به لیست
-            </button>
-            <button className='closeBtn' onClick={onClose}>
-              بستن
-            </button>
-          </div>
+          <button className='confirmBtn' onClick={handleConfirm}>
+            تایید و افزودن به لیست
+          </button>
         </div>
       )}
     </div>

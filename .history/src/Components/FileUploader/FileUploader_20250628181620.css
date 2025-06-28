@@ -275,6 +275,7 @@ select {
   transform: none;
 }
 
+/* Responsive */
 @media (max-width: 480px) {
   .containSingle {
     padding: 20px 18px;

@@ -1,0 +1,84 @@
+.chooseFile {
+  border: 5px dashed rgb(216, 216, 216);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  margin-bottom: 100px;
+}
+.selectedAudio::-webkit-media-controls-panel {
+  background-color: rgb(211, 211, 211);
+  border: none;
+}
+.selectedAudio {
+  border-radius: 0;
+  background-color: rgb(61, 20, 20);
+  padding: 10px;
+  width: 100% !important;
+  display: none;
+}
+.singleSelectedAudio {
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cover {
+  width: 20px;
+  height:20px;
+}
+.containDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.containSingle {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.name {
+  margin-left: 10px;
+}
+.fullWidth{
+    width: 100%;
+}
+.play {
+  width: 30px;
+  height: 30px;
+}
+.btnPlay {
+  background-color: transparent;
+  border: none;
+}
+
+.deleteAll {
+  margin: 10px;
+  background-color: #4B70F5;
+  margin-bottom: 10px;
+  padding: 15px 10px;
+  border-radius: 5px;
+  border: none;
+  color: #ffff;
+}
+select {
+  background-color: #73cbba;
+  border: none;
+  height: 40px;
+  padding: 10px 30px;
+  color: white;
+}
+.coverMusicList{
+  width: 40px;
+}
+
+.containList{
+  margin-top: 20px;
+}

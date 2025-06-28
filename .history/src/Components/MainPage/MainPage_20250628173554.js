@@ -10,6 +10,8 @@ const DB_NAME = 'AudioFilesDB';
 const DB_VERSION = 1;
 const STORE_NAME = 'audioFiles';
 
+Modal.setAppElement('#root'); // <-- Ensure Modal can manage focus (important for accessibility)
+
 const MainPage = () => {
     const [category, setCategory] = useState('');
     const [categories, setCategories] = useState([]);
@@ -40,6 +42,21 @@ const MainPage = () => {
         }
     }, []);
 
+    useEffect(() => {
+        const fetchStoredFiles = async () => {
+            const db = await initDB();
+            const tx = db.transaction(STORE_NAME, 'readonly');
+            const store = tx.objectStore(STORE_NAME);
+            const storedFiles = await store.getAll();
+            const filesWithURL = storedFiles.map(file => ({
+                ...file,
+                data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
+            }));
+            setAudioFiles(filesWithURL);
+        };
+        fetchStoredFiles();
+    }, []);
+
     const handleAddCategory = () => {
         if (category) {
             const updatedCategories = [...categories, category];
@@ -53,6 +70,7 @@ const MainPage = () => {
     const handlePlay = (file) => {
         setCurrentMusic(file);
     };
+
     const deleteAllFiles = async () => {
         const db = await initDB();
         const tx = db.transaction(STORE_NAME, 'readwrite');
@@ -62,11 +80,11 @@ const MainPage = () => {
         setAudioFiles([]);
     };
 
-
     return (
         <div className="container">
             <Modal
                 isOpen={showModal}
+                onRequestClose={() => setShowModal(false)}
                 contentLabel="Create Playlist"
                 className="modalCategory"
             >
@@ -100,12 +118,10 @@ const MainPage = () => {
             </div>
 
             <div className="rightPage">
-
-                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
-
                 <button className="uploadBtn" onClick={() => setShowUploaderModal(true)}>
                     Upload New Music
                 </button>
+                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <Modal
                     isOpen={showUploaderModal}
@@ -118,13 +134,10 @@ const MainPage = () => {
                         setAudioFiles={setAudioFiles}
                         onClose={() => setShowUploaderModal(false)}
                     />
-
                 </Modal>
+
                 <div className='row'>
-
-
-
-                    <div className="fullWidth w-full  mx-auto p-4 bg-gradient-to-br from-[#5409DA] via-[#4E71FF] to-[#BBFBFF] rounded-3xl shadow-xl flex items-center space-x-4 animate-fade-in">
+                    <div className="fullWidth w-full mx-auto p-4 bg-gradient-to-br from-[#5409DA] via-[#4E71FF] to-[#BBFBFF] rounded-3xl shadow-xl flex items-center space-x-4 animate-fade-in">
                         <div className="text-white">
                             <MusicPlayer currentMusic={currentMusic} />
                         </div>

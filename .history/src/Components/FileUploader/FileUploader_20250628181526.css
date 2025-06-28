@@ -86,15 +86,18 @@ select {
 
 .containSingle {
   margin: 25px auto;
+  padding: 25px 30px;
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.07);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
+  gap: 28px;
   user-select: none;
 }
 
+/* هدر آپلود */
 .uploadHeader {
   display: flex;
   justify-content: space-between;
@@ -110,6 +113,7 @@ select {
   letter-spacing: 0.03em;
 }
 
+/* دکمه انتخاب فایل */
 .uploadBtn {
   background: linear-gradient(135deg, #4e71ff 0%, #3351b3 100%);
   color: white;
@@ -130,6 +134,7 @@ select {
   transform: translateY(-2px);
 }
 
+/* منطقه کشیدن و رها کردن */
 .chooseFile {
   border: 4px dashed #cbd5e1;
   background-color: #f3f4f6;
@@ -159,6 +164,7 @@ select {
   user-select: none;
 }
 
+/* لیست فایل های آماده آپلود */
 .tempFilesList {
   margin-top: 15px;
   border-top: 1.5px solid #e5e7eb;
@@ -173,6 +179,7 @@ select {
   letter-spacing: 0.01em;
 }
 
+/* هر آیتم فایل */
 .tempItem {
   display: flex;
   align-items: center;
@@ -188,6 +195,7 @@ select {
   flex-grow: 1;
 }
 
+/* عکس کاور */
 .coverPreview {
   width: 65px;
   height: 65px;
@@ -198,6 +206,7 @@ select {
   user-select: none;
 }
 
+/* اطلاعات و آپلود کاور */
 .info {
   flex-grow: 1;
   display: flex;
@@ -215,6 +224,7 @@ select {
   text-overflow: ellipsis;
 }
 
+/* اینپوت فایل کاور */
 .info input[type="file"] {
   cursor: pointer;
   border-radius: 12px;
@@ -233,6 +243,7 @@ select {
   box-shadow: 0 0 10px #4e71ff;
 }
 
+/* دکمه‌ها در پایین */
 .btnGroup {
   margin-top: 30px;
   display: flex;
@@ -275,6 +286,7 @@ select {
   transform: none;
 }
 
+/* Responsive */
 @media (max-width: 480px) {
   .containSingle {
     padding: 20px 18px;

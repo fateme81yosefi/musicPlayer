@@ -44,6 +44,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     }
   }, []);
 
+  // بارگذاری فایل‌ها از IndexedDB و ایجاد URL پخش برای صوت
   useEffect(() => {
     const fetchStoredFiles = async () => {
       const db = await initDB();
@@ -51,6 +52,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
       const filesWithURL = storedFiles.map(file => ({
         ...file,
         data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+        // cover به صورت base64 ذخیره شده، مستقیم استفاده می‌شود
       }));
       setAudioFiles(filesWithURL);
     };
@@ -67,8 +69,8 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
         type: file.type,
         data,
         category: selectedCategory || '',
-        cover: null,    
-        coverUrl: null,
+        cover: null,    // کاور به صورت base64 ذخیره می‌شود
+        coverUrl: null, // این فیلد الان نیاز نیست استفاده بشه
       };
     }));
 
@@ -108,6 +110,7 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
     const filesWithURL = storedFiles.map(file => ({
       ...file,
       data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+      // cover بدون تغییر بمونه چون base64 هست
     }));
 
     setAudioFiles(filesWithURL);

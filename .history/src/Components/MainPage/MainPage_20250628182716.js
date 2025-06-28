@@ -16,7 +16,7 @@ const MainPage = () => {
     const [currentMusic, setCurrentMusic] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState(''); // ✅ این خط اضافه شد
     const [showUploaderModal, setShowUploaderModal] = useState(false);
     const [audioFiles, setAudioFiles] = useState([]);
 
@@ -33,12 +33,24 @@ const MainPage = () => {
         return db;
     };
 
-    useEffect(() => {
-        const storedCategories = JSON.parse(localStorage.getItem('categories'));
-        if (storedCategories) {
-            setCategories(storedCategories);
-        }
-    }, []);
+useEffect(() => {
+  const loadAudioFiles = async () => {
+    const db = await openDB(DB_NAME, DB_VERSION);
+    const tx = db.transaction(STORE_NAME, 'readonly');
+    const store = tx.objectStore(STORE_NAME);
+    const storedFiles = await store.getAll();
+
+    const filesWithURLs = storedFiles.map(file => ({
+      ...file,
+      data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+      cover: file.cover || null // cover همان base64 است، مستقیم می‌توان استفاده کرد
+    }));
+
+    setAudioFiles(filesWithURLs);
+  };
+
+  loadAudioFiles();
+}, []);
 
     const handleAddCategory = () => {
         if (category) {

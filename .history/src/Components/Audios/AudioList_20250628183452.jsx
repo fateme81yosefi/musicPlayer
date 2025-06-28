@@ -30,7 +30,7 @@ const AudioList = ({
                 <img
                   className="coverMusicList"
                   alt="cover"
-                  src={file.cover || "/song_cover.png"} 
+                  src={file.cover || "/song_cover.png"} // ← استفاده از base64 کاور یا دیفالت
                 />
                 <span className="name">{file.name}</span>
               </div>

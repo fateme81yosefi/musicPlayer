@@ -1,0 +1,225 @@
+.chooseFile {
+  border: 5px dashed rgb(216, 216, 216);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  margin-bottom: 100px;
+}
+.selectedAudio::-webkit-media-controls-panel {
+  background-color: rgb(211, 211, 211);
+  border: none;
+}
+.selectedAudio {
+  border-radius: 0;
+  background-color: rgb(61, 20, 20);
+  padding: 10px;
+  width: 100% !important;
+  display: none;
+}
+.singleSelectedAudio {
+  border-bottom: 1px solid rgb(238, 238, 238);
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cover {
+  width: 20px;
+  height:20px;
+}
+.containDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.containSingle {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.name {
+  margin-left: 10px;
+}
+.fullWidth{
+    width: 100%;
+}
+.play {
+  width: 30px;
+  height: 30px;
+}
+.btnPlay {
+  background-color: transparent;
+  border: none;
+}
+
+.deleteAll {
+  margin: 10px;
+  background-color: #4B70F5;
+  margin-bottom: 10px;
+  padding: 15px 10px;
+  border-radius: 5px;
+  border: none;
+  color: #ffff;
+}
+select {
+  background-color: #73cbba;
+  border: none;
+  height: 40px;
+  padding: 10px 30px;
+  color: white;
+}
+.coverMusicList{
+  width: 40px;
+}
+
+.containList{
+  margin-top: 20px;
+}
+
+
+.containSingle {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.uploadHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.uploadHeader h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+.uploadBtn {
+  background-color: #4E71FF;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.uploadBtn:hover {
+  background-color: #3a53d1;
+}
+
+.fullWidth {
+  border: 2px dashed #bbb;
+  padding: 30px;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #666;
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.chooseFile img {
+  width: 60px;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+
+.chooseFile p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tempFilesList {
+  margin-top: 10px;
+}
+
+.tempFilesList h4 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.tempItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.tempDetails {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.coverPreview {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 15px;
+  border: 1px solid #ccc;
+}
+
+.info {
+  flex-grow: 1;
+}
+
+.name {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.info input[type="file"] {
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btnGroup {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.confirmBtn, .closeBtn {
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmBtn {
+  background-color: #4E71FF;
+  color: white;
+}
+
+.confirmBtn:hover {
+  background-color: #3a53d1;
+}
+
+.closeBtn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.closeBtn:hover {
+  background-color: #cfcfcf;
+}
