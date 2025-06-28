@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-
 const AudioList = ({
   audioFiles,
-  categories, 
+  categories,
   currentCategory,
   onCategoryChange,
   onPlay,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
-
 
   return (
     <div className="fullWidth containList">

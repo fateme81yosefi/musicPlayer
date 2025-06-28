@@ -4,11 +4,6 @@ import FileUploader from "../FileUploader/FileUploader";
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import "./MainPage.css";
 import MusicLibrary from '../Audios/MusicLibrary';
-import { openDB } from 'idb';
-
-const DB_NAME = 'AudioFilesDB';
-const DB_VERSION = 1;
-const STORE_NAME = 'audioFiles';
 
 const MainPage = () => {
     const [category, setCategory] = useState('');
@@ -18,20 +13,6 @@ const MainPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [searchQuery, setSearchQuery] = useState(''); // ✅ این خط اضافه شد
     const [showUploaderModal, setShowUploaderModal] = useState(false);
-    const [audioFiles, setAudioFiles] = useState([]);
-
-    const initDB = async () => {
-        const db = await openDB(DB_NAME, DB_VERSION, {
-            upgrade(db) {
-                if (!db.objectStoreNames.contains(STORE_NAME)) {
-                    const store = db.createObjectStore(STORE_NAME, { keyPath: 'name' });
-                    store.createIndex('category', 'category');
-                    store.createIndex('isFav', 'isFav');
-                }
-            }
-        });
-        return db;
-    };
 
     useEffect(() => {
         const storedCategories = JSON.parse(localStorage.getItem('categories'));
@@ -53,14 +34,7 @@ const MainPage = () => {
     const handlePlay = (file) => {
         setCurrentMusic(file);
     };
-    const deleteAllFiles = async () => {
-        const db = await initDB();
-        const tx = db.transaction(STORE_NAME, 'readwrite');
-        const store = tx.objectStore(STORE_NAME);
-        await store.clear();
-        await tx.done;
-        setAudioFiles([]);
-    };
+
     return (
         <div className="container">
             <Modal
@@ -99,11 +73,11 @@ const MainPage = () => {
 
             <div className="rightPage">
 
+                {/* <FileUploader />  */}
 
                 <button className="uploadBtn" onClick={() => setShowUploaderModal(true)}>
                     Upload New Music
                 </button>
-                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <Modal
                     isOpen={showUploaderModal}
@@ -112,11 +86,10 @@ const MainPage = () => {
                     className="modalUploader"
                 >
                     <FileUploader
-                        audioFiles={audioFiles}
-                        setAudioFiles={setAudioFiles}
-                        onClose={() => setShowUploaderModal(false)}
+                        handlePlay={handlePlay}
+                        query={searchQuery}
+                        selectedCategory={selectedCategory}
                     />
-
                     <button onClick={() => setShowUploaderModal(false)}>Close</button>
                 </Modal>
                 <div className='row'>

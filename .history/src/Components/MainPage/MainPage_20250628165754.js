@@ -4,11 +4,6 @@ import FileUploader from "../FileUploader/FileUploader";
 import MusicPlayer from '../MusicPlayer/MusicPlayer';
 import "./MainPage.css";
 import MusicLibrary from '../Audios/MusicLibrary';
-import { openDB } from 'idb';
-
-const DB_NAME = 'AudioFilesDB';
-const DB_VERSION = 1;
-const STORE_NAME = 'audioFiles';
 
 const MainPage = () => {
     const [category, setCategory] = useState('');
@@ -19,6 +14,11 @@ const MainPage = () => {
     const [searchQuery, setSearchQuery] = useState(''); // ✅ این خط اضافه شد
     const [showUploaderModal, setShowUploaderModal] = useState(false);
     const [audioFiles, setAudioFiles] = useState([]);
+    import { openDB } from 'idb';
+
+const DB_NAME = 'AudioFilesDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'audioFiles';
 
     const initDB = async () => {
         const db = await openDB(DB_NAME, DB_VERSION, {
@@ -99,11 +99,12 @@ const MainPage = () => {
 
             <div className="rightPage">
 
+                {/* <FileUploader />  */}
 
                 <button className="uploadBtn" onClick={() => setShowUploaderModal(true)}>
                     Upload New Music
                 </button>
-                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
+                <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <Modal
                     isOpen={showUploaderModal}

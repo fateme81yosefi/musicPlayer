@@ -1,16 +1,40 @@
 import React, { useState } from "react";
+import { openDB } from 'idb';
+import "./FileUploader.css";
 
-
+const DB_NAME = 'AudioFilesDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'audioFiles';
 const AudioList = ({
   audioFiles,
-  categories, 
+  categories,
   currentCategory,
   onCategoryChange,
   onPlay,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+const initDB = async () => {
+  const db = await openDB(DB_NAME, DB_VERSION, {
+    upgrade(db) {
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'name' });
+        store.createIndex('category', 'category');
+        store.createIndex('isFav', 'isFav');
+      }
+    }
+  });
+  return db;
+};
 
-
+  // حذف همه فایل‌ها از IndexedDB
+  const deleteAllFiles = async () => {
+    const db = await initDB();
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    const store = tx.objectStore(STORE_NAME);
+    await store.clear();
+    await tx.done;
+    setAudioFiles([]);
+  };
   return (
     <div className="fullWidth containList">
       <input
@@ -18,6 +42,7 @@ const AudioList = ({
         placeholder="search..."
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
 
       {audioFiles
         .filter(

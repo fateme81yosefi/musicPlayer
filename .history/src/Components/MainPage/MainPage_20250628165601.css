@@ -150,7 +150,7 @@ h4 {
   position: relative;
 }
 .uploadBtn {
-  margin: 1rem ;
+  margin: 1rem 0;
   background: #4B70F5;
   color: white;
   border: none;

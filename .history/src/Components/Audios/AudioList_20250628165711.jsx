@@ -1,14 +1,32 @@
 import React, { useState } from "react";
+import { openDB } from 'idb';
+
+const DB_NAME = 'AudioFilesDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'audioFiles';
 
 
 const AudioList = ({
   audioFiles,
   categories, 
+   setAudioFiles,    
   currentCategory,
   onCategoryChange,
   onPlay,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
+const initDB = async () => {
+  const db = await openDB(DB_NAME, DB_VERSION, {
+    upgrade(db) {
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'name' });
+        store.createIndex('category', 'category');
+        store.createIndex('isFav', 'isFav');
+      }
+    }
+  });
+  return db;
+};
 
 
   return (

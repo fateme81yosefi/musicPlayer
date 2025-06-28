@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 
-
 const AudioList = ({
   audioFiles,
-  categories, 
+  categories,
   currentCategory,
   onCategoryChange,
   onPlay,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
-
 
   return (
     <div className="fullWidth containList">
@@ -18,6 +16,7 @@ const AudioList = ({
         placeholder="search..."
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
 
       {audioFiles
         .filter(

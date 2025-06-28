@@ -1,15 +1,13 @@
-import React, { useState } from "react";
-
+import React, { useState } from 'react';
 
 const AudioList = ({
   audioFiles,
-  categories, 
+  categories,
   currentCategory,
   onCategoryChange,
-  onPlay,
+  onPlay
 }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <div className="fullWidth containList">
@@ -20,10 +18,9 @@ const AudioList = ({
       />
 
       {audioFiles
-        .filter(
-          (file) =>
-            (currentCategory === "" || file.category === currentCategory) &&
-            file.name.toLowerCase().includes(searchQuery.toLowerCase())
+        .filter(file =>
+          (currentCategory === '' || file.category === currentCategory) &&
+          file.name.toLowerCase().includes(searchQuery.toLowerCase())
         )
         .map((file) => (
           <div className="singleSelectedAudio" key={file.name}>
@@ -32,7 +29,7 @@ const AudioList = ({
                 <img
                   className="coverMusicList"
                   alt="cover"
-                  src={file.coverUrl || "/song_cover.png"} // ← تضمین نمایش کاور دیفالت
+  src={file.coverUrl || '/song_cover.png'} // ← تضمین نمایش کاور دیفالت
                 />
                 <span className="name">{file.name}</span>
               </div>
@@ -43,9 +40,7 @@ const AudioList = ({
                 >
                   <option value="">Select Category</option>
                   {categories.map((cat, idx) => (
-                    <option key={idx} value={cat}>
-                      {cat}
-                    </option>
+                    <option key={idx} value={cat}>{cat}</option>
                   ))}
                 </select>
                 <button className="btnPlay" onClick={() => onPlay(file)}>

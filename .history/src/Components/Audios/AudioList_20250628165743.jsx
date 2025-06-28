@@ -4,6 +4,7 @@ import React, { useState } from "react";
 const AudioList = ({
   audioFiles,
   categories, 
+   setAudioFiles,    
   currentCategory,
   onCategoryChange,
   onPlay,

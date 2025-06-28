@@ -103,7 +103,7 @@ const MainPage = () => {
                 <button className="uploadBtn" onClick={() => setShowUploaderModal(true)}>
                     Upload New Music
                 </button>
-                <button className='uploadBtn' onClick={deleteAllFiles}>Delete All Musics</button>
+                <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
 
                 <Modal
                     isOpen={showUploaderModal}

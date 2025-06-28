@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { openDB } from 'idb';
+
+const DB_NAME = 'AudioFilesDB';
+const DB_VERSION = 1;
+const STORE_NAME = 'audioFiles';
 
 
 const AudioList = ({
   audioFiles,
   categories, 
+   setAudioFiles,    
   currentCategory,
   onCategoryChange,
   onPlay,

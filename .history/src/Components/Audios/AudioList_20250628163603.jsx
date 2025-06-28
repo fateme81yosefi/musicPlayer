@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 
-
 const AudioList = ({
   audioFiles,
-  categories, 
+  categories,
   currentCategory,
   onCategoryChange,
   onPlay,
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
-
+  // حذف همه فایل‌ها از IndexedDB
+  const deleteAllFiles = async () => {
+    const db = await initDB();
+    const tx = db.transaction(STORE_NAME, 'readwrite');
+    const store = tx.objectStore(STORE_NAME);
+    await store.clear();
+    await tx.done;
+    setAudioFiles([]);
+  };
   return (
     <div className="fullWidth containList">
       <input
@@ -18,6 +25,7 @@ const AudioList = ({
         placeholder="search..."
         onChange={(e) => setSearchQuery(e.target.value)}
       />
+      <button className='deleteAll' onClick={deleteAllFiles}>Delete All Musics</button>
 
       {audioFiles
         .filter(

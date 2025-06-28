@@ -29,7 +29,7 @@
 
 .cover {
   width: 20px;
-  height:20px;
+  height:2 0px;
 }
 .containDetails {
   display: flex;
@@ -61,7 +61,7 @@
 
 .deleteAll {
   margin: 10px;
-  background-color: #4B70F5;
+  background-color: #1dd3b0;
   margin-bottom: 10px;
   padding: 15px 10px;
   border-radius: 5px;
@@ -72,13 +72,5 @@ select {
   background-color: #73cbba;
   border: none;
   height: 40px;
-  padding: 10px 30px;
   color: white;
-}
-.coverMusicList{
-  width: 40px;
-}
-
-.containList{
-  margin-top: 20px;
 }

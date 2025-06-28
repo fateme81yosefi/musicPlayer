@@ -125,7 +125,6 @@ audio::-webkit-media-controls-panel {
   border: 2px solid #5409da;
   padding: 5px 10px;
   border-radius: 10px;
-  margin: 20px 0;
 }
 
 .create {
@@ -140,21 +139,4 @@ audio::-webkit-media-controls-panel {
 h3,
 h4 {
   color: white;
-}
-.modalUploader {
-  background: white;
-  padding: 30px;
-  max-width: 600px;
-  margin: auto;
-  border-radius: 20px;
-  position: relative;
-}
-.uploadBtn {
-  margin: 1rem ;
-  background: #4B70F5;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
 }
