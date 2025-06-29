@@ -1,0 +1,182 @@
+.player {
+  max-width: 420px;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #5409DA, #4E71FF, #8DD8FF, #BBFBFF);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.cover {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+
+
+.spin {
+  animation: spin 15s linear infinite;
+}
+
+.pulse {
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px white;
+  }
+  50% {
+    transform: scale(1.06);
+    box-shadow: 0 0 30px white;
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.controls-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.progress-container {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background: white;
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.volume-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.volume-label input[type="range"] {
+  width: 80px;
+  cursor: pointer;
+}
+
+.speed-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.speed-buttons button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.speed-buttons button.active,
+.speed-buttons button:hover {
+  background: white;
+  color: #5409DA;
+}
+
+.play-btn {
+  font-size: 1.6rem;
+  padding: 10px 16px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  color: #5409DA;
+  cursor: pointer;
+  margin: 20px auto 0;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+}
+.equalizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 60px;
+  height: 45px;
+}
+
+.bar {
+  width: 20px;
+  height: 15px;
+  background: linear-gradient(180deg, #4ade80, #16a34a);
+  border-radius: 5px;
+  box-shadow: 0 0 8px #22c55e88;
+  animation: bounceSmooth 1.5s infinite ease-in-out;
+  transform-origin: bottom;
+}
+
+.bar1 {
+  animation-delay: 0s;
+  animation-duration: 1.3s;
+}
+.bar2 {
+  animation-delay: 0.15s;
+  animation-duration: 1.6s;
+}
+.bar3 {
+  animation-delay: 0.3s;
+  animation-duration: 1.4s;
+}
+.bar4 {
+  animation-delay: 0.45s;
+  animation-duration: 1.7s;
+}
+.bar5 {
+  animation-delay: 0.6s;
+  animation-duration: 1.5s;
+}
+
+@keyframes bounceSmooth {
+  0%, 100% {
+    height: 20%;
+    filter: brightness(1);
+  }
+  50% {
+    height: 100%;
+    filter: brightness(1.6);
+  }
+}
