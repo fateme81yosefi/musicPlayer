@@ -48,21 +48,23 @@ const AudioList = ({
               <div className="row aligner">
                 <select
                   value={file.category?.name || ""}
-                  onChange={async (e) => {
-                    const selectedCategory = categories.find(
-                      (cat) => cat.name === e.target.value
-                    );
+                  onChange={onChange={async (e) => {
+  const selectedCategory = categories.find(
+    (cat) => cat.name === e.target.value
+  );
 
-                    onCategoryChange(file, selectedCategory);
+  onCategoryChange(file, selectedCategory);
 
-                    const db = await initDB();
+  const db = await initDB();
 
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
-                  }}
+  // فقط اگر file.id موجود بود، ادامه بده
+  if (file?.id) {
+    await updateFileCategory(db, file.id, selectedCategory);
+  } else {
+    console.warn("file.id is undefined; cannot update DB.");
+  }
+}}
+}
                 >
                   <option value="">Select Category</option>
                   {categories.map((cat, idx) => (

@@ -1,5 +1,3 @@
-import { openDB } from "idb";
-
 const AudioList = ({
   audioFiles,
   categories,
@@ -7,27 +5,6 @@ const AudioList = ({
   onCategoryChange,
   onPlay,
 }) => {
-  const STORE_NAME = "audioFiles";
-  const DB_NAME = "AudioFilesDB";
-  const DB_VERSION = 1;
-  const updateFileCategory = async (db, fileId, newCategory) => {
-    const tx = db.transaction(STORE_NAME, "readwrite");
-    const store = tx.objectStore(STORE_NAME);
-
-    const file = await store.get(fileId);
-    if (file) {
-      file.category = newCategory;
-      await store.put(file);
-    }
-
-    await tx.done;
-  };
-
-  const initDB = async () => {
-    const db = await openDB(DB_NAME, DB_VERSION);
-    return db;
-  };
-
   return (
     <div className="fullWidth containList">
       {audioFiles
@@ -45,34 +22,21 @@ const AudioList = ({
                 />
                 <span className="musicDetails">{file.name}</span>
               </div>
-              <div className="row aligner">
+              <div className="row aligner" >
                 <select
-                  value={file.category?.name || ""}
-                  onChange={async (e) => {
-                    const selectedCategory = categories.find(
-                      (cat) => cat.name === e.target.value
-                    );
-
-                    onCategoryChange(file, selectedCategory);
-
-                    const db = await initDB();
-
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
-                  }}
+                  value={file.category.name}
+                  onChange={(e) => onCategoryChange(file, e.target.value)}
                 >
                   <option value="">Select Category</option>
                   {categories.map((cat, idx) => (
-                    <option key={idx} value={cat.name}>
+                    <option key={idx} value={cat}>
                       {cat.name}
                     </option>
                   ))}
                 </select>
-
                 <button className="btnPlay" onClick={() => onPlay(file)}>
+                
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

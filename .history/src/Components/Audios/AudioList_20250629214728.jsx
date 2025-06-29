@@ -1,5 +1,3 @@
-import { openDB } from "idb";
-
 const AudioList = ({
   audioFiles,
   categories,
@@ -7,26 +5,21 @@ const AudioList = ({
   onCategoryChange,
   onPlay,
 }) => {
-  const STORE_NAME = "audioFiles";
-  const DB_NAME = "AudioFilesDB";
-  const DB_VERSION = 1;
-  const updateFileCategory = async (db, fileId, newCategory) => {
-    const tx = db.transaction(STORE_NAME, "readwrite");
-    const store = tx.objectStore(STORE_NAME);
 
-    const file = await store.get(fileId);
-    if (file) {
-      file.category = newCategory;
-      await store.put(file);
-    }
 
-    await tx.done;
-  };
+    const updateFileCategory = async (db, fileId, newCategory) => {
+  const tx = db.transaction(STORE_NAME, "readwrite");
+  const store = tx.objectStore(STORE_NAME);
 
-  const initDB = async () => {
-    const db = await openDB(DB_NAME, DB_VERSION);
-    return db;
-  };
+  const file = await store.get(fileId);
+  if (file) {
+    file.category = newCategory;
+    await store.put(file);
+  }
+
+  await tx.done;
+};
+
 
   return (
     <div className="fullWidth containList">
@@ -48,20 +41,12 @@ const AudioList = ({
               <div className="row aligner">
                 <select
                   value={file.category?.name || ""}
-                  onChange={async (e) => {
-                    const selectedCategory = categories.find(
+                  onChange={(e) => {
+                    const selected = categories.find(
                       (cat) => cat.name === e.target.value
                     );
-
-                    onCategoryChange(file, selectedCategory);
-
-                    const db = await initDB();
-
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
+                    onCategoryChange(file, selected); // آپدیت در UI
+                    updateMusicCategory(file.id, selected); // ذخیره در db
                   }}
                 >
                   <option value="">Select Category</option>
@@ -71,7 +56,6 @@ const AudioList = ({
                     </option>
                   ))}
                 </select>
-
                 <button className="btnPlay" onClick={() => onPlay(file)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

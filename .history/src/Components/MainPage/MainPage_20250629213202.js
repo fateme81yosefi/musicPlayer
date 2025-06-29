@@ -279,7 +279,7 @@ const MainPage = () => {
 
 
                     <MusicLibrary
-                        categories={categories}
+                    categories={c}
                         query={searchQuery}
                         selectedCategory={selectedCategory}
                         handlePlay={handlePlay}

@@ -1,5 +1,3 @@
-import { openDB } from "idb";
-
 const AudioList = ({
   audioFiles,
   categories,
@@ -8,8 +6,7 @@ const AudioList = ({
   onPlay,
 }) => {
   const STORE_NAME = "audioFiles";
-  const DB_NAME = "AudioFilesDB";
-  const DB_VERSION = 1;
+
   const updateFileCategory = async (db, fileId, newCategory) => {
     const tx = db.transaction(STORE_NAME, "readwrite");
     const store = tx.objectStore(STORE_NAME);
@@ -23,10 +20,12 @@ const AudioList = ({
     await tx.done;
   };
 
+  
   const initDB = async () => {
     const db = await openDB(DB_NAME, DB_VERSION);
     return db;
   };
+  
 
   return (
     <div className="fullWidth containList">
@@ -53,15 +52,10 @@ const AudioList = ({
                       (cat) => cat.name === e.target.value
                     );
 
-                    onCategoryChange(file, selectedCategory);
+                    onCategoryChange(file, selectedCategory); // آپدیت در state/UI
 
                     const db = await initDB();
-
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
+                    await updateFileCategory(db, file.id, selectedCategory); // ذخیره در IndexedDB
                   }}
                 >
                   <option value="">Select Category</option>

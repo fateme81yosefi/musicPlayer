@@ -46,32 +46,23 @@ const AudioList = ({
                 <span className="musicDetails">{file.name}</span>
               </div>
               <div className="row aligner">
-                <select
-                  value={file.category?.name || ""}
-                  onChange={async (e) => {
-                    const selectedCategory = categories.find(
-                      (cat) => cat.name === e.target.value
-                    );
+                onChange=
+                {async (e) => {
+                  const selectedCategory = categories.find(
+                    (cat) => cat.name === e.target.value
+                  );
 
-                    onCategoryChange(file, selectedCategory);
+                  onCategoryChange(file, selectedCategory);
 
-                    const db = await initDB();
+                  const db = await initDB();
 
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
-                  }}
-                >
-                  <option value="">Select Category</option>
-                  {categories.map((cat, idx) => (
-                    <option key={idx} value={cat.name}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-
+                  // فقط اگر file.id موجود بود، ادامه بده
+                  if (file?.id) {
+                    await updateFileCategory(db, file.id, selectedCategory);
+                  } else {
+                    console.warn("file.id is undefined; cannot update DB.");
+                  }
+                }}
                 <button className="btnPlay" onClick={() => onPlay(file)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

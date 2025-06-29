@@ -57,6 +57,7 @@ const AudioList = ({
 
                     const db = await initDB();
 
+                    // فقط اگر file.id موجود بود، ادامه بده
                     if (file?.id) {
                       await updateFileCategory(db, file.id, selectedCategory);
                     } else {

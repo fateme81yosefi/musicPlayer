@@ -24,14 +24,11 @@ const storeFile = async (db, file) => {
   await tx.done;
 };
 
-export default function MusicLibrary({
-  query,
-  selectedCategory,
-  handlePlay,
-  categories,
-}) {
+export default function MusicLibrary({ query, selectedCategory, handlePlay ,}) {
   const [audioFiles, setAudioFiles] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("");
+
 
   useEffect(() => {
     setCurrentCategory(selectedCategory || "");
@@ -41,17 +38,13 @@ export default function MusicLibrary({
     const fetchFiles = async () => {
       const db = await initDB();
       const storedFiles = await getStoredFiles(db);
-      const files = storedFiles.map((file) => ({
+      const files = storedFiles.map(file => ({
         ...file,
-        data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+        data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
       }));
 
       if (query) {
-        setAudioFiles(
-          files.filter((f) =>
-            f.name.toLowerCase().includes(query.toLowerCase())
-          )
-        );
+        setAudioFiles(files.filter(f => f.name.toLowerCase().includes(query.toLowerCase())));
       } else {
         setAudioFiles(files);
       }
@@ -66,9 +59,9 @@ export default function MusicLibrary({
     await storeFile(db, updatedFile);
 
     const storedFiles = await getStoredFiles(db);
-    const files = storedFiles.map((file) => ({
+    const files = storedFiles.map(file => ({
       ...file,
-      data: URL.createObjectURL(new Blob([file.data], { type: file.type })),
+      data: URL.createObjectURL(new Blob([file.data], { type: file.type }))
     }));
     setAudioFiles(files);
   };
@@ -77,7 +70,7 @@ export default function MusicLibrary({
     <AudioList
       audioFiles={audioFiles}
       categories={categories}
-      setAudioFiles={setAudioFiles}
+      setAudioFiles={setAudioFiles} 
       currentCategory={currentCategory}
       onCategoryChange={handleCategoryChange}
       onPlay={handlePlay}

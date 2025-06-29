@@ -1,5 +1,3 @@
-import { openDB } from "idb";
-
 const AudioList = ({
   audioFiles,
   categories,
@@ -53,15 +51,10 @@ const AudioList = ({
                       (cat) => cat.name === e.target.value
                     );
 
-                    onCategoryChange(file, selectedCategory);
+                    onCategoryChange(file, selectedCategory); // آپدیت در state/UI
 
                     const db = await initDB();
-
-                    if (file?.id) {
-                      await updateFileCategory(db, file.id, selectedCategory);
-                    } else {
-                      console.warn("file.id is undefined; cannot update DB.");
-                    }
+                    await updateFileCategory(db, file.id, selectedCategory); // ذخیره در IndexedDB
                   }}
                 >
                   <option value="">Select Category</option>
