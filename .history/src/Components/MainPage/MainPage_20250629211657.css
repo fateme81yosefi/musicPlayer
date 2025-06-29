@@ -3,7 +3,6 @@
   flex-direction: row;
   background-color: #ffffff;
   width: 100%;
-  overflow: hidden;
 }
 .leftMenue {
   background: linear-gradient(
@@ -231,7 +230,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 99%;
+  width: 100%;
 }
 .uploadBtnHeader {
   background: #ffffff;
@@ -297,21 +296,14 @@ select {
   left: 10px;
   font-weight: bold;
 }
-.containCateg {
-  width: 100%;
+.containCateg{
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow: hidden ;
 }
-.previewCover {
+.previewCover{
   width: 100px;
   height: 100px;
   object-fit: cover;
   margin-bottom: 20px;
-}
-
-.categ img {
-
-  filter: brightness(0.5); 
-  border-radius: 5px;
 }

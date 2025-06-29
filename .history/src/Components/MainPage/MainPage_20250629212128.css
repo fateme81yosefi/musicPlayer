@@ -297,13 +297,13 @@ select {
   left: 10px;
   font-weight: bold;
 }
-.containCateg {
+.containCateg{
   width: 100%;
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow: auto ;
 }
-.previewCover {
+.previewCover{
   width: 100px;
   height: 100px;
   object-fit: cover;
@@ -311,7 +311,9 @@ select {
 }
 
 .categ img {
-
-  filter: brightness(0.5); 
-  border-radius: 5px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  filter: brightness(0.5); /* هر چی کمتر، تصویر تاریک‌تر */
+  transition: filter 0.3s ease; /* انیمیشن نرم هنگام تغییر */
 }

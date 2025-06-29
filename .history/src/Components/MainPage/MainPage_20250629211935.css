@@ -3,7 +3,6 @@
   flex-direction: row;
   background-color: #ffffff;
   width: 100%;
-  overflow: hidden;
 }
 .leftMenue {
   background: linear-gradient(
@@ -297,21 +296,15 @@ select {
   left: 10px;
   font-weight: bold;
 }
-.containCateg {
+.containCateg{
   width: 100%;
   display: flex;
   flex-direction: row;
-  overflow: auto;
+  overflow: auto ;
 }
-.previewCover {
+.previewCover{
   width: 100px;
   height: 100px;
   object-fit: cover;
   margin-bottom: 20px;
-}
-
-.categ img {
-
-  filter: brightness(0.5); 
-  border-radius: 5px;
 }

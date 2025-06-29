@@ -312,6 +312,7 @@ select {
 
 .categ img {
 
-  filter: brightness(0.5); 
+  filter: brightness(0.5); /* هر چی کمتر، تصویر تاریک‌تر */
+  transition: filter 0.3s ease; /* انیمیشن نرم هنگام تغییر */
   border-radius: 5px;
 }

@@ -49,7 +49,7 @@
 }
 .fullWidth{
     width: 100%;
-    overflow: hidden !important;
+    overflow: hidden;
 }
 .play {
   width: 30px;
