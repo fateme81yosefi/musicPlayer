@@ -40,33 +40,12 @@ const MainPage = () => {
         const db = await initDBPlaylist();
         await db.add('playlists', playlist);
     };
-
-
     const deleteCategoryFromDB = async (id) => {
-        const db = await initDBPlaylist();
-        const tx = db.transaction('playlists', "readwrite");
-        const store = tx.objectStore('playlists');
+        const db = await initDBPlaylist(); 
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
         await store.delete(id);
         await tx.done;
-    };
-
-    const clearAllPlaylists = async () => {
-        try {
-            const db = await openDB('PlaylistDB', 1);
-            if (!db.objectStoreNames.contains('playlists')) {
-                console.error(`Object store ${'playlists'} does not exist.`);
-                return;
-            }
-            const tx = db.transaction('playlists', "readwrite");
-            const store = tx.objectStore('playlists');
-
-            await store.clear();
-            await tx.done;
-
-            console.log("تمام پلی‌لیست‌ها با موفقیت حذف شدند.");
-        } catch (error) {
-            console.error("خطا در حذف همه پلی‌لیست‌ها:", error);
-        }
     };
 
     const handleImageChange = (e) => {
@@ -80,7 +59,6 @@ const MainPage = () => {
     const generateRandomId = () => {
         return Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
     };
-
     const handleAddCategory = async () => {
         if (category) {
             const id = generateRandomId();
@@ -269,8 +247,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"
@@ -302,7 +278,7 @@ const MainPage = () => {
                                 <div className='catName'>
                                     {item.name}
                                 </div>
-                                <button onClick={() => deleteCategoryFromDB(item.id)}>حذف</button>
+                                <button onClick={() => deleteCategoryFromDB(cat.id)}>حذف</button>
 
                             </div>
                         ))

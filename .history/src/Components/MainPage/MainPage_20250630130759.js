@@ -269,7 +269,7 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
+                        <button className='uploadBtnHeader marginer' onClick={() => deleteCategoryFromDB()}>Delete All PlayLists</button>
 
                     </div>
                     <input

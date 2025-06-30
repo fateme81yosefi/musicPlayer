@@ -75,7 +75,7 @@ export default function MusicLibrary({
       audioFiles={audioFiles}
       categories={categories}
       setAudioFiles={setAudioFiles}
-      currentCategory={selectedCategory}
+      currentCategory={currentCategory}
       onCategoryChange={handleCategoryChange}
       onPlay={handlePlay}
     />

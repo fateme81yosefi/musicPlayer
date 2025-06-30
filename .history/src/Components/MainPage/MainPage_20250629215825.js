@@ -40,35 +40,6 @@ const MainPage = () => {
         const db = await initDBPlaylist();
         await db.add('playlists', playlist);
     };
-
-
-    const deleteCategoryFromDB = async (id) => {
-        const db = await initDBPlaylist();
-        const tx = db.transaction('playlists', "readwrite");
-        const store = tx.objectStore('playlists');
-        await store.delete(id);
-        await tx.done;
-    };
-
-    const clearAllPlaylists = async () => {
-        try {
-            const db = await openDB('PlaylistDB', 1);
-            if (!db.objectStoreNames.contains('playlists')) {
-                console.error(`Object store ${'playlists'} does not exist.`);
-                return;
-            }
-            const tx = db.transaction('playlists', "readwrite");
-            const store = tx.objectStore('playlists');
-
-            await store.clear();
-            await tx.done;
-
-            console.log("تمام پلی‌لیست‌ها با موفقیت حذف شدند.");
-        } catch (error) {
-            console.error("خطا در حذف همه پلی‌لیست‌ها:", error);
-        }
-    };
-
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
@@ -77,23 +48,18 @@ const MainPage = () => {
         }
     };
 
-    const generateRandomId = () => {
-        return Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-    };
-
     const handleAddCategory = async () => {
         if (category) {
-            const id = generateRandomId();
-
-            const saveCategory = async (cover) => {
+            const reader = new FileReader();
+            reader.onloadend = async () => {
+                const base64Image = reader.result;
                 const newPlaylist = {
-                    id,              // 👈 آیدی رندوم
                     name: category,
-                    cover: cover || null,
+                    cover: base64Image,
                 };
-
                 await addPlaylist(newPlaylist);
-                setCategories((prev) => [...prev, newPlaylist]); // ✅ اضافه کردن آبجکت کامل
+
+                setCategories([...categories, category]);
                 setCategory('');
                 setCoverImage(null);
                 setPreviewUrl('');
@@ -101,20 +67,15 @@ const MainPage = () => {
             };
 
             if (coverImage) {
-                const reader = new FileReader();
-                reader.onloadend = () => {
-                    const base64Image = reader.result;
-                    saveCategory(base64Image);
-                };
                 reader.readAsDataURL(coverImage);
             } else {
-                await saveCategory(null);
+                await addPlaylist({ name: category, cover: null });
+                setCategories([...categories, category]);
+                setCategory('');
+                setShowModal(false);
             }
         }
     };
-
-
-
     const initDB = async () => {
         const db = await openDB(DB_NAME, DB_VERSION, {
             upgrade(db) {
@@ -269,8 +230,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"
@@ -297,13 +256,11 @@ const MainPage = () => {
                     {
                         categories.map((item, index) => (
                             <div className='categ' key={index}>
-                                <img onClick={() => setSelectedCategory(item.name)} src={item.cover} alt='cover' />
+                                <img onClick={() => setSelectedCategory(item.id)} src={item.cover} alt='cover' />
 
                                 <div className='catName'>
                                     {item.name}
                                 </div>
-                                <button onClick={() => deleteCategoryFromDB(item.id)}>حذف</button>
-
                             </div>
                         ))
                     }
@@ -313,7 +270,7 @@ const MainPage = () => {
 
 
                     {currentMusic?.data && (
-                        <div className="fullWidth w-full bg-gradient-to-br from-[#5409DA] via-[#4E71FF] to-[#BBFBFF] rounded-3xl shadow-xl flex items-center space-x-4 animate-fade-in">
+                        <div className="fullWidth w-full mx-auto p-4 bg-gradient-to-br from-[#5409DA] via-[#4E71FF] to-[#BBFBFF] rounded-3xl shadow-xl flex items-center space-x-4 animate-fade-in">
                             <div className="text-white">
                                 <MusicPlayer currentMusic={currentMusic} />
                             </div>

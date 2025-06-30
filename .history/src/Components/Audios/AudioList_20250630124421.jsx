@@ -10,29 +10,30 @@ const AudioList = ({
   const STORE_NAME = "audioFiles";
   const DB_NAME = "AudioFilesDB";
   const DB_VERSION = 1;
-  const updateFileCategory = async (db, fileId, newCategory) => {
-    const tx = db.transaction(STORE_NAME, "readwrite");
-    const store = tx.objectStore(STORE_NAME);
+const updateFileCategory = async (db, fileId, newCategory) => {
+  const tx = db.transaction(STORE_NAME, "readwrite");
+  const store = tx.objectStore(STORE_NAME);
 
-    const file = await store.get(fileId);
-    if (!file) {
-      console.warn("❌ File not found in DB for id:", fileId);
-      return;
-    }
+  const file = await store.get(fileId);
+  if (!file) {
+    console.warn("❌ File not found in DB for id:", fileId);
+    return;
+  }
 
-    if (!file.data) {
-      console.warn("⚠️ File found but has no 'data' field.", file);
-      return;
-    }
+  if (!file.data) {
+    console.warn("⚠️ File found but has no 'data' field.", file);
+    return;
+  }
 
-    const updatedFile = {
-      ...file,
-      category: newCategory,
-    };
-
-    await store.put(updatedFile);
-    await tx.done;
+  const updatedFile = {
+    ...file,
+    category: newCategory,
   };
+
+  await store.put(updatedFile);
+  await tx.done;
+};
+
 
   const initDB = async () => {
     const db = await openDB(DB_NAME, DB_VERSION);

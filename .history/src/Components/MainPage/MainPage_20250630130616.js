@@ -52,7 +52,7 @@ const MainPage = () => {
 
     const clearAllPlaylists = async () => {
         try {
-            const db = await openDB('PlaylistDB', 1);
+            const db = await openDB(DB_NAME, DB_VERSION);
             if (!db.objectStoreNames.contains('playlists')) {
                 console.error(`Object store ${'playlists'} does not exist.`);
                 return;
@@ -269,8 +269,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"

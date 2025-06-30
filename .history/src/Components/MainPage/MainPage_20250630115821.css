@@ -227,7 +227,7 @@ h4 {
     #5409da 65%,
     #5409da 100%
   );
-  padding: 5px;
+  padding: 0px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -241,7 +241,7 @@ h4 {
   border-radius: 5px;
   cursor: pointer;
   font-size: large;
-  margin: 5px;
+  margin: 10px;
 }
 .headerBtnContainer div {
   display: flex;
@@ -297,16 +297,16 @@ select:focus {
   justify-content: space-between;
 }
 .categ {
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 150px;
   object-fit: contain;
   position: relative;
   color: #ffffff;
-  margin: 5px;
+  margin: 10px;
 }
 .categ img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
 }
 .catName {

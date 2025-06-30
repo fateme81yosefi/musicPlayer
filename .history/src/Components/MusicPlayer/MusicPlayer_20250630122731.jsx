@@ -29,7 +29,6 @@ export default function MusicPlayer({ currentMusic }) {
       setIsPlaying(false);
     }
   }, [currentMusic]);
-  
 
   const togglePlay = () => {
     const audio = audioRef.current;
@@ -125,7 +124,7 @@ export default function MusicPlayer({ currentMusic }) {
       </button>
       <audio
         ref={audioRef}
-        src={currentMusic?.data}
+        src={currentMusic?.objectUrl}
         preload="metadata"
         volume={volume}
         playbackRate={playbackRate}

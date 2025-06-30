@@ -269,8 +269,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"

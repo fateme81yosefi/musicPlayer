@@ -41,32 +41,13 @@ const MainPage = () => {
         await db.add('playlists', playlist);
     };
 
-
+    
     const deleteCategoryFromDB = async (id) => {
-        const db = await initDBPlaylist();
-        const tx = db.transaction('playlists', "readwrite");
-        const store = tx.objectStore('playlists');
+        const db = await initDBPlaylist(); 
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
         await store.delete(id);
         await tx.done;
-    };
-
-    const clearAllPlaylists = async () => {
-        try {
-            const db = await openDB('PlaylistDB', 1);
-            if (!db.objectStoreNames.contains('playlists')) {
-                console.error(`Object store ${'playlists'} does not exist.`);
-                return;
-            }
-            const tx = db.transaction('playlists', "readwrite");
-            const store = tx.objectStore('playlists');
-
-            await store.clear();
-            await tx.done;
-
-            console.log("تمام پلی‌لیست‌ها با موفقیت حذف شدند.");
-        } catch (error) {
-            console.error("خطا در حذف همه پلی‌لیست‌ها:", error);
-        }
     };
 
     const handleImageChange = (e) => {
@@ -269,8 +250,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"

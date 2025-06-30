@@ -15,22 +15,11 @@ const AudioList = ({
     const store = tx.objectStore(STORE_NAME);
 
     const file = await store.get(fileId);
-    if (!file) {
-      console.warn("❌ File not found in DB for id:", fileId);
-      return;
+    if (file && file.data) {
+      file.category = newCategory;
+      await store.put(file);
     }
 
-    if (!file.data) {
-      console.warn("⚠️ File found but has no 'data' field.", file);
-      return;
-    }
-
-    const updatedFile = {
-      ...file,
-      category: newCategory,
-    };
-
-    await store.put(updatedFile);
     await tx.done;
   };
 
@@ -96,7 +85,8 @@ const AudioList = ({
                 </button>
               </div>
             </div>
-            <audio className="selectedAudio" src={file.data} controls />
+            <audio className="selectedAudio" src={currentMusic?.objectUrl} controls />
+
           </div>
         ))}
     </div>

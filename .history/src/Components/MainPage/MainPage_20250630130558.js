@@ -52,13 +52,13 @@ const MainPage = () => {
 
     const clearAllPlaylists = async () => {
         try {
-            const db = await openDB('PlaylistDB', 1);
-            if (!db.objectStoreNames.contains('playlists')) {
-                console.error(`Object store ${'playlists'} does not exist.`);
+            const db = await openDB(DB_NAME, DB_VERSION);
+            if (!db.objectStoreNames.contains(STORE_NAME)) {
+                console.error(`Object store ${STORE_NAME} does not exist.`);
                 return;
             }
-            const tx = db.transaction('playlists', "readwrite");
-            const store = tx.objectStore('playlists');
+            const tx = db.transaction(STORE_NAME, "readwrite");
+            const store = tx.objectStore(STORE_NAME);
 
             await store.clear();
             await tx.done;
@@ -269,8 +269,6 @@ const MainPage = () => {
                             Upload New Music
                         </button>
                         <button className='uploadBtnHeader marginer' onClick={() => setShowModal(true)}>Create PlayList</button>
-                        <button className='uploadBtnHeader marginer' onClick={() => clearAllPlaylists()}>Delete All PlayLists</button>
-
                     </div>
                     <input
                         className="inputSearch"

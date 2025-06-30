@@ -1,6 +1,6 @@
 .player {
-  max-width: 420px;
-  margin: 10px auto;
+  max-width: 320px;
+  margin: 40px auto;
   background: linear-gradient(135deg, #5409DA, #4E71FF, #8DD8FF, #BBFBFF);
   border-radius: 20px;
   padding: 25px;

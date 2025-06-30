@@ -297,12 +297,12 @@ select:focus {
   justify-content: space-between;
 }
 .categ {
-  width: 100px;
+  width: 150px;
   height: 100px;
   object-fit: contain;
   position: relative;
   color: #ffffff;
-  margin: 5px;
+  margin: px;
 }
 .categ img {
   height: 100px;

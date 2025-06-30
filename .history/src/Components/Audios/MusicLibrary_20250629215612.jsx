@@ -32,7 +32,9 @@ export default function MusicLibrary({
 }) {
   const [audioFiles, setAudioFiles] = useState([]);
 
-
+  useEffect(() => {
+    setCurrentCategory(selectedCategory || "");
+  }, [selectedCategory]);
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -75,7 +77,7 @@ export default function MusicLibrary({
       audioFiles={audioFiles}
       categories={categories}
       setAudioFiles={setAudioFiles}
-      currentCategory={selectedCategory}
+      currentCategory={currentCategory}
       onCategoryChange={handleCategoryChange}
       onPlay={handlePlay}
     />

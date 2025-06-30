@@ -29,7 +29,6 @@ export default function MusicPlayer({ currentMusic }) {
       setIsPlaying(false);
     }
   }, [currentMusic]);
-  
 
   const togglePlay = () => {
     const audio = audioRef.current;
