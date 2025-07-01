@@ -351,36 +351,22 @@ select:focus {
   background-color: #ffffff;
 }
 
+
 @media (max-width: 1250px) {
-  .leftMenue {
-    display: none;
+
+  .leftMenue{
+    display:none;
   }
-  .rightPage {
+  .rightPage{
     width: 100%;
   }
-  .headerBtnContainer {
+  .headerBtnContainer{
     flex-direction: column;
     width: 100%;
   }
 
-  .inputSearch {
+  .inputSearch{
     max-width: 100%;
   }
 
-  .containList {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    max-height: fit-content;
-  }
-  .player {
-    width: 100%;
-    max-width: 80%;
-    height: fit-content;
-  }
-  .container{
-    overflow-y: auto;
-  }
-  
 }

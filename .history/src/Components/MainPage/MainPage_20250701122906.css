@@ -371,8 +371,6 @@ select:focus {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: auto;
-    max-height: fit-content;
   }
   .player {
     width: 100%;
@@ -382,5 +380,4 @@ select:focus {
   .container{
     overflow-y: auto;
   }
-  
 }

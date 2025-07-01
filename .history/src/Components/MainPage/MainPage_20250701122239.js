@@ -245,7 +245,7 @@ const MainPage = () => {
             <div className="rightPage">
 
                 <div className='fullWidth headerBtnContainer'>
-                    <div className='btnGroupHeader'>
+                    <div className='btn'>
                         <button className='uploadBtnHeader marginer' onClick={deleteAllFiles}>Delete All Musics</button>
 
                         <button className="uploadBtnHeader marginer" onClick={() => setShowUploaderModal(true)}>

@@ -372,7 +372,7 @@ select:focus {
     display: flex;
     flex-direction: column;
     height: auto;
-    max-height: fit-content;
+    max-height: au;
   }
   .player {
     width: 100%;
