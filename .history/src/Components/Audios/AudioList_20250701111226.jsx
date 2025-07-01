@@ -29,7 +29,7 @@ const AudioList = ({
   };
 
   return (
-    <div className="containList">
+    <div className="fullWidth containList">
       {audioFiles
         .filter(
           (file) => !currentCategory || file.category?.name === currentCategory

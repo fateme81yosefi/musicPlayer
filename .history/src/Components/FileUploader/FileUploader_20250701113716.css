@@ -79,9 +79,9 @@
 .containList {
   margin: 10px;
   width: 100%;
-  overflow: auto;
-  max-height: 700px;
-
+  overflow: scroll;
+  max-height: -webkit-fill-available;
+  
 }
 
 .containSingle {

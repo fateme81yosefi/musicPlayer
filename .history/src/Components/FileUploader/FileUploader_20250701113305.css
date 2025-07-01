@@ -77,11 +77,13 @@
 }
 
 .containList {
-  margin: 10px;
+  margin: 20px;
+  overflow: scroll;
   width: 100%;
-  overflow: auto;
-  max-height: 700px;
-
+  max-height: fit-content;
+  overflow: scroll;
+  overflow: scroll;
+  max-height: -webkit-fill-available;
 }
 
 .containSingle {

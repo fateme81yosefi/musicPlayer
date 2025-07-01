@@ -79,7 +79,7 @@
 .containList {
   margin: 10px;
   width: 100%;
-  overflow: auto;
+  overflow: scroll;
   max-height: 700px;
 
 }

@@ -294,7 +294,7 @@ const MainPage = () => {
                     }
                 </div>
 
-                <div className='row containList'>
+                <div className='row overflow'>
 
 
                     {currentMusic?.data && (

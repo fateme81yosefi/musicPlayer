@@ -29,7 +29,7 @@ const AudioList = ({
   };
 
   return (
-    <div className="containList">
+    <div className="fullWidth containList">
       {audioFiles
         .filter(
           (file) => !currentCategory || file.category?.name === currentCategory
@@ -49,7 +49,7 @@ const AudioList = ({
               <div className="row aligner">
                 <button
                   onClick={() => handleDelete(file.id)}
-                  className="deleteBtn"
+                  className="delete-btn"
                 >
                   delete
                 </button>

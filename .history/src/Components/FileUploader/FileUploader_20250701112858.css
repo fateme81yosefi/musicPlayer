@@ -29,7 +29,7 @@
 
 .cover {
   width: 20px;
-  height: 20px;
+  height:20px;
 }
 .containDetails {
   display: flex;
@@ -47,9 +47,9 @@
 .name {
   margin-left: 10px;
 }
-.fullWidth {
-  width: 100%;
-  overflow: hidden !important;
+.fullWidth{
+    width: 100%;
+    overflow: hidden !important;
 }
 .play {
   width: 30px;
@@ -62,7 +62,7 @@
 
 .deleteAll {
   margin: 10px;
-  background-color: #4b70f5;
+  background-color: #4B70F5;
   margin-bottom: 10px;
   padding: 15px 10px;
   border-radius: 5px;
@@ -70,26 +70,24 @@
   color: #ffff;
 }
 
-.coverMusicList {
+.coverMusicList{
   width: 40px;
   height: 40px;
   object-fit: cover;
 }
 
-.containList {
-  margin: 10px;
-  width: 100%;
-  overflow: auto;
-  max-height: 700px;
-
+.containList{
+  margin: 20px;
+  overflow: scroll;
 }
+
 
 .containSingle {
   margin: 25px auto;
   background: #ffffff;
   border-radius: 18px;
   box-shadow: 0 16px 30px rgba(0, 0, 0, 0.07);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   user-select: none;
@@ -236,23 +234,21 @@
 }
 
 .btnGroup {
-  margin-top: 10px;
+  margin-top:10px;
   display: flex;
   justify-content: flex-start;
   gap: 18px;
   user-select: none;
 }
 
-.confirmBtn,
-.closeBtn {
+.confirmBtn, .closeBtn {
   font-weight: 700;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   padding: 10px 20px;
   box-shadow: 0 8px 16px rgb(0 0 0 / 0.12);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease,
-    transform 0.2s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
   user-select: none;
 }
 
@@ -292,8 +288,7 @@
     flex-direction: column;
     gap: 12px;
   }
-  .confirmBtn,
-  .closeBtn {
+  .confirmBtn, .closeBtn {
     width: 100%;
   }
   .chooseFile {

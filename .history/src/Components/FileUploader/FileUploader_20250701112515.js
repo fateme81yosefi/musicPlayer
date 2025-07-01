@@ -93,34 +93,32 @@ const FileUploader = ({ audioFiles, setAudioFiles, selectedCategory = '', onClos
                 <button className='uploadBtn' onClick={open}>Upload MP3</button>
 
                 {tempFiles.length > 0 && (
-                    <>
-                        <div className='tempFilesList'>
-                            {tempFiles.map((file, i) => (
-                                <div className="tempItem" key={i}>
-                                    <div className="tempDetails">
-                                        <img
-                                            src={file.cover || "/song_cover.png"}
-                                            alt="cover"
-                                            className="coverPreview"
+                    <div className='tempFilesList'>
+                        {tempFiles.map((file, i) => (
+                            <div className="tempItem" key={i}>
+                                <div className="tempDetails">
+                                    <img
+                                        src={file.cover || "/song_cover.png"}
+                                        alt="cover"
+                                        className="coverPreview"
+                                    />
+                                    <div className='info'>
+                                        <p className="name">{file.name}</p>
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => handleCoverUpload(e, i)}
                                         />
-                                        <div className='info'>
-                                            <p className="name">{file.name}</p>
-                                            <input
-                                                type="file"
-                                                accept="image/*"
-                                                onChange={(e) => handleCoverUpload(e, i)}
-                                            />
-                                        </div>
                                     </div>
                                 </div>
-                            ))}
-
-                        </div>
-                        <div className="btnGroup">
+                            </div>
+                        ))}
+                       
+                    </div>
+                     <div className="btnGroup">
                             <button className='confirmBtn' onClick={handleConfirm}>Add</button>
                             <button className='closeBtn' onClick={onClose}>Close</button>
                         </div>
-                    </>
                 )}
             </div>
         </div>
