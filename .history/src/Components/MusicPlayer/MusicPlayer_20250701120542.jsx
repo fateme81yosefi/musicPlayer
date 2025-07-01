@@ -93,7 +93,7 @@ export default function MusicPlayer({ currentMusic }) {
       </div>
       <h2 className="title">{currentMusic?.name || "بدون عنوان"}</h2>
       <div className="info">
-        <div className="containBars">
+        <div className="controls-row">
           <div className="progress-container" onClick={handleSeek}>
             <div
               className="progress-bar"
@@ -125,31 +125,38 @@ export default function MusicPlayer({ currentMusic }) {
             </button>
           ))}
         </div>
-
-        <button className="playerBtn" onClick={togglePlay}>
-          {isPlaying ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          )}
-        </button>
       </div>
+      <button className="" onClick={togglePlay}>
+        {isPlaying ? (
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+            
+            </defs>
+            <circle cx="50" cy="50" r="45" fill="" />
+            <rect x="35" y="30" width="10" height="40" fill="white" rx="2" />
+            <rect x="55" y="30" width="10" height="40" fill="white" rx="2" />
+          </svg>
+        ) : (
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+              <linearGradient id="gradPlay" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6C00FF" />
+                <stop offset="100%" stop-color="#00DBDE" />
+              </linearGradient>
+            <circle cx="50" cy="50" r="45" fill="url(#gradPlay)" />
+            <polygon points="40,30 70,50 40,70" fill="white" />
+          </svg>
+        )}
+      </button>
       <audio
         ref={audioRef}
         src={currentMusic?.data}

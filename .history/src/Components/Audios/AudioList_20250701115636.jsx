@@ -8,6 +8,7 @@ const AudioList = ({
   onCategoryChange,
   onPlay,
 }) => {
+
   const handleDelete = async (fileId) => {
     const success = await deleteMusicById(fileId);
     if (!success) {
@@ -50,27 +51,18 @@ const AudioList = ({
                   onClick={() => handleDelete(file.id)}
                   className="deleteBtn"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={25}
-                    height={25}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="white"
-                    strokeWidth={1.5}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className=""
-                  >
-                    <path d="M3 6h18" />
-                    <path d="M8 6v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
-                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                    <path d="M10 11v6" />
-                    <path d="M14 11v6" />
-                  </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" viewBox="0 0 24 24"
+                                            stroke="black" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round"
+                                            className="">
+                                            <path d="M3 6h18" />
+                                            <path d="M8 6v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+                                            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                                            <path d="M10 11v6" />
+                                            <path d="M14 11v6" />
+                                        </svg>
                 </button>
                 <select
-                  value={file.category?.id}
+                  value={file.category?.id }
                   onChange={(e) => {
                     const selectedCategoryId = e.target.value;
                     onCategoryChange(file, selectedCategoryId);

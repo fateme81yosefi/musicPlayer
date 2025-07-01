@@ -305,7 +305,7 @@ select:focus {
 }
 .categ img {
   height: 100px;
-  width: 250px;
+  width: 25px;
   object-fit: cover;
 }
 .catName {

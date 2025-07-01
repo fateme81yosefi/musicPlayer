@@ -296,7 +296,7 @@ select:focus {
   justify-content: space-between;
 }
 .categ {
-  width: 250px;
+  width: 100px;
   height: 100px;
   object-fit: contain;
   position: relative;
@@ -305,7 +305,7 @@ select:focus {
 }
 .categ img {
   height: 100px;
-  width: 250px;
+  width: 100px;
   object-fit: cover;
 }
 .catName {
@@ -313,11 +313,10 @@ select:focus {
   position: absolute;
   z-index: 100;
   top: 10px;
-  left: 0px;
+  left: 10px;
   font-weight: bold;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: ;
 }
 .containCateg {
   width: 100%;

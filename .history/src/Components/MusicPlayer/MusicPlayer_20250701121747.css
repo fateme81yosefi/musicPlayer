@@ -1,7 +1,7 @@
 .player {
   max-width: 70%;
   margin: 10px auto;
-  background: linear-gradient(135deg, #5409da, #4e71ff, #8dd8ff, #bbfbff);
+  background: linear-gradient(135deg, #5409DA, #4E71FF, #8DD8FF, #BBFBFF);
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -41,8 +41,7 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 10px white;
   }
@@ -92,7 +91,7 @@
 }
 
 .volume-label input[type="range"] {
-  width: 50%;
+  width:50%;
   cursor: pointer;
 }
 
@@ -118,8 +117,9 @@
 .speed-buttons button.active,
 .speed-buttons button:hover {
   background: white;
-  color: #5409da;
+  color: #5409DA;
 }
+
 
 .equalizer {
   display: flex;
@@ -133,7 +133,7 @@
 .bar {
   width: 40px;
   height: 15px;
-  background: linear-gradient(180deg, #5409da, #4e71ff);
+  background: linear-gradient(180deg, #5409DA, #4E71FF);
   border-radius: 5px;
   box-shadow: 0 0 8px #4903c3;
   animation: bounceSmooth 1.5s infinite ease-in-out;
@@ -162,8 +162,7 @@
 }
 
 @keyframes bounceSmooth {
-  0%,
-  100% {
+  0%, 100% {
     height: 20%;
     filter: brightness(1);
   }
@@ -172,8 +171,8 @@
     filter: brightness(1.6);
   }
 }
-.playerBtn {
-  background-color: #4e71ff;
+.playerBtn{
+  background-color: #4E71FF;
   fill: white;
   border-radius: 100px;
   width: 40px;
@@ -182,12 +181,14 @@
   align-items: center;
   justify-content: center;
 }
-.containBars {
+.containBars{
   width: 100%;
 }
+.info{
+}
+
 
 .info {
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

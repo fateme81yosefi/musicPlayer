@@ -125,31 +125,30 @@ export default function MusicPlayer({ currentMusic }) {
             </button>
           ))}
         </div>
-
-        <button className="playerBtn" onClick={togglePlay}>
-          {isPlaying ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          )}
-        </button>
       </div>
+      <button className="playerBtn" onClick={togglePlay}>
+        {isPlaying ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="white"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        )}
+      </button>
       <audio
         ref={audioRef}
         src={currentMusic?.data}

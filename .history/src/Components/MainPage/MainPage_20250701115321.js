@@ -286,16 +286,15 @@ const MainPage = () => {
 
                                 <div className='catName'>
                                     <span>{item.name}</span>
-                                    <button className='deleteCatBtn' onClick={() => deleteCategoryFromDB(item.id)}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" viewBox="0 0 24 24"
-                                            stroke="black" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round"
-                                            className="">
-                                            <path d="M3 6h18" />
-                                            <path d="M8 6v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
-                                            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
-                                            <path d="M10 11v6" />
-                                            <path d="M14 11v6" />
-                                        </svg></button>
+                                    <button className='deleteCatBtn' onClick={() => deleteCategoryFromDB(item.id)}><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+       stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round"
+       className="w-6 h-6">
+    <path d="M3 6h18" />
+    <path d="M8 6v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+    <path d="M10 11v6" />
+    <path d="M14 11v6" />
+  </svg></button>
 
                                 </div>
 

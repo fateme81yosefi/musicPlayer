@@ -317,7 +317,8 @@ select:focus {
   font-weight: bold;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px;
 }
 .containCateg {
   width: 100%;

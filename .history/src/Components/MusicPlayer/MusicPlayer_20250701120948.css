@@ -1,7 +1,7 @@
 .player {
   max-width: 70%;
   margin: 10px auto;
-  background: linear-gradient(135deg, #5409da, #4e71ff, #8dd8ff, #bbfbff);
+  background: linear-gradient(135deg, #5409DA, #4E71FF, #8DD8FF, #BBFBFF);
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -10,9 +10,7 @@
   text-align: center;
   aspect-ratio: 1 / 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: ;
 }
 
 .cover {
@@ -41,8 +39,7 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 10px white;
   }
@@ -92,7 +89,7 @@
 }
 
 .volume-label input[type="range"] {
-  width: 50%;
+  width: 80px;
   cursor: pointer;
 }
 
@@ -118,8 +115,9 @@
 .speed-buttons button.active,
 .speed-buttons button:hover {
   background: white;
-  color: #5409da;
+  color: #5409DA;
 }
+
 
 .equalizer {
   display: flex;
@@ -133,7 +131,7 @@
 .bar {
   width: 40px;
   height: 15px;
-  background: linear-gradient(180deg, #5409da, #4e71ff);
+  background: linear-gradient(180deg, #5409DA, #4E71FF);
   border-radius: 5px;
   box-shadow: 0 0 8px #4903c3;
   animation: bounceSmooth 1.5s infinite ease-in-out;
@@ -162,8 +160,7 @@
 }
 
 @keyframes bounceSmooth {
-  0%,
-  100% {
+  0%, 100% {
     height: 20%;
     filter: brightness(1);
   }
@@ -172,8 +169,8 @@
     filter: brightness(1.6);
   }
 }
-.playerBtn {
-  background-color: #4e71ff;
+.playerBtn{
+  background-color: #4E71FF;
   fill: white;
   border-radius: 100px;
   width: 40px;
@@ -181,97 +178,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.containBars {
-  width: 100%;
-}
-
-.info {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-
-.containBars {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-}
-
-.progress-container {
-  flex: 1;
-  height: 8px;
-  background: #ffffff33;
-  border-radius: 50px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #00dbde, #fc00ff);
-  transition: width 0.2s ease-in-out;
-}
-
-.volume-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.volume-label input[type="range"] {
-  width: 100px;
-  accent-color: #ffffff;
-  cursor: pointer;
-}
-
-.speed-buttons {
-  display: flex;
-  gap: 12px;
-}
-
-.speed-buttons button {
-  padding: 6px 12px;
-  border: none;
-  border-radius: 12px;
-  background: #ffffff22;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.speed-buttons button:hover {
-  background: #ffffff44;
-}
-
-.speed-buttons button.active {
-  background: linear-gradient(135deg, #00dbde, #fc00ff);
-  color: white;
-  box-shadow: 0 0 8px #ffffff88;
-}
-
-.playerBtn {
-  margin-top: 10px;
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #6c00ff, #00dbde);
-  border: none;
-  border-radius: 50%;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease;
-}
-
-.playerBtn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }

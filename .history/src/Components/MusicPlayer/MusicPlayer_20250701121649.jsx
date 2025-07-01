@@ -92,64 +92,53 @@ export default function MusicPlayer({ currentMusic }) {
         )}
       </div>
       <h2 className="title">{currentMusic?.name || "بدون عنوان"}</h2>
-      <div className="info">
-        <div className="containBars">
-          <div className="progress-container" onClick={handleSeek}>
-            <div
-              className="progress-bar"
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
+     <div className="info">
+  <div className="containBars">
+    <div className="progress-container" onClick={handleSeek}>
+      <div
+        className="progress-bar"
+        style={{ width: `${progress}%` }}
+      ></div>
+    </div>
 
-          <label className="volume-label">
-            <SpeakerIcon color="#ffffff" size={25} />
-            <input
-              type="range"
-              min="0"
-              max="1"
-              step="0.01"
-              value={volume}
-              onChange={handleVolumeChange}
-            />
-          </label>
-        </div>
+    <label className="volume-label">
+      <SpeakerIcon color="#ffffff" size={25} />
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={volume}
+        onChange={handleVolumeChange}
+      />
+    </label>
+  </div>
 
-        <div className="speed-buttons">
-          {[0.5, 1, 1.5, 2].map((rate) => (
-            <button
-              key={rate}
-              className={playbackRate === rate ? "active" : ""}
-              onClick={() => changePlaybackRate(rate)}
-            >
-              {rate}x
-            </button>
-          ))}
-        </div>
+  <div className="speed-buttons">
+    {[0.5, 1, 1.5, 2].map((rate) => (
+      <button
+        key={rate}
+        className={playbackRate === rate ? "active" : ""}
+        onClick={() => changePlaybackRate(rate)}
+      >
+        {rate}x
+      </button>
+    ))}
+  </div>
 
-        <button className="playerBtn" onClick={togglePlay}>
-          {isPlaying ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="white"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          )}
-        </button>
-      </div>
+  <button className="playerBtn" onClick={togglePlay}>
+    {isPlaying ? (
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white">
+        <path d="M6 5h4v14H6zm8 0h4v14h-4z" />
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="white">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    )}
+  </button>
+</div>
+
       <audio
         ref={audioRef}
         src={currentMusic?.data}
